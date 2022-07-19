@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# directorio de scripts
+DIRSCRIPTS=~/.myscripts
+
+function configuracion()
+{
+mkdir $DIRSCRIPTS
+if [ `echo $PATH | grep -c $DIRSCRIPTS` -le 0 ]; then
+	export PATH=$PATH":$DIRSCRIPTS"
+fi
+cat << INDICACION
+para tener acceso a tus scripts desde el CLI, sigue las siguientes instrucciones:
+1. copia o mueve tus scripts al directorio $DIRSCRIPTS
+2. ejecuta el comando: chmod +x $DIRSCRIPTS/*
+3. ejecuta el comando: bash
+INDICACION
+}
+
+(configuracion) 2>/dev/null

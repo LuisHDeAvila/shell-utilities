@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# CRUD de metadatos
+: ' 
+  Herramienta para crear un registro de cambios en sistema de archivos personales del usuario.
+  Luego puede crear, leer, actualizar y borrar los metadatos que no necesite.
+'
+cat << INICIO
+  Herramienta para crear un registro de cambios en sistema de archivos personales del usuario.
+  Luego puede crear, leer, actualizar y borrar los metadatos.
+INICIO
+red_="\e[1;31m\033[1m" ;green_="\e[0;32m\033[1m" ;blue_="\e[0;34m\033[1m" ;yellow_="\e[0;33m\033[1m" ;purple_="\e[0;35m\033[1m" ;turquesa_="\e[0;36m\033[1m" ;gray_="\e[0;37m\033[1m" ;end_="\033[0m\e[0m" ;
+ERROR(){
+cat << EOF
+  please install exiftool 
+EOF
+}
+# Leer metadatos de todos los archivos de directorio principal de usuario.
+(cd ; find . > | xargs exiftool >> ~/metadatos_en_archivos_de_usuario)
+echo "   Se han registrado todos los metadatos de directorio de usuario."
+# Create, read, update and delete
+MetadataCrud()
+{
+  CRUD()
+  {
+    # actualizar metadatos
+    exiftool -all="$1"
+  }
+  (cd ;CRUD ' ')
+}
+echo "Esta seguro que desea actualizar los metadatos?  
+[ENTER] continuar 
+[Ctrl+C] salir"
+read CONFIRMAR
+
+MetadataCrud 2>& /dev/null || ERROR

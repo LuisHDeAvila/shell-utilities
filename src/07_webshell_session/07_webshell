@@ -1,0 +1,20 @@
+#!/bin/bash
+: ' 
+	crear una plataforma de despliegue de shell sobre la web
+'
+# colors
+
+green=32
+red=31
+blue=34
+yellow=33
+purple=35
+cian=36
+gray=37
+end=0
+
+color(){
+	colorcode=$1
+	echo -e "\e[1;${colorcode};40m ${@} \e[m"
+}
+color "$green" esto es un log

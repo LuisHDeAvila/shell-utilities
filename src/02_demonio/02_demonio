@@ -1,0 +1,108 @@
+#! /bin/bash
+
+# función de ayuda
+function demonio() {
+
+    function ayuda() {
+        cat <<DESCRIPCION_AYUDA
+SYNOPIS
+    $0 [SEGUNDOS]
+DESCRIPCION
+    Escribe la fecha cada X segundos en el log '~/demonio.log'
+CODIGOS DE RETORNO
+    0 Si no hay ningún error
+DESCRIPCION_AYUDA
+    }
+    # si primer parámetro == '­-h' o == '­­--help'
+    if [ "$1" == "-h" -o "$1" == "--help" ]; then
+        ayuda
+        exit 0
+    fi
+    function main() {
+        DEFAULT=2
+        # comprobar que SEGUNDOS es un número
+        if [ "$SEGUNDOS" != "0" -a "$(echo $SEGUNDOS | awk '{ print $1 * 1 }')" != "$SEGUNDOS" ]; then
+            echo "El parámetro '$1' no es un número. Se cogerá el valor por 
+defecto ($DEFAULT)"
+            SEGUNDOS=$DEFAULT
+        fi
+        # reinicio demonio.log
+        echo "" >~/demonio.log
+        while [ true ]; do
+            date +%d/%m/%Y" "%H:%M:%S >>~/demonio.log
+            sleep $SEGUNDOS
+        done
+    }
+    echo $$
+    main $1
+
+}
+
+Interface() {
+    function ayuda() {
+        cat <<DESCRIPCION_AYUDA
+SYNOPIS
+    $0 start|stop|restart|status
+DESCRIPCIÓN
+    Muestra que arraca, para, relanza y nos muestra el estado de 'demonio'.
+CÓDIGOS DE RETORNO
+    0 Si no hay ningún error.
+DESCRIPCION_AYUDA
+    }
+    DAEMON=demonio
+    PIDFILE=/tmp/$DAEMON.pid
+    function do_start() {
+        if [ -e $PIDFILE ]; then
+            echo "El proceso ya se está ejecutando."
+            exit 0
+        fi
+        ./$DAEMON &
+        echo $! >$PIDFILE
+        echo "Ejecutandose..."
+    }
+    function do_stop() {
+        if [ -e $PIDFILE ]; then
+            kill -9 $(cat $PIDFILE)
+            rm $PIDFILE
+        fi
+        echo "Parado."
+    }
+    # función que para y arrance 'demonio'
+    function do_restart() {
+        do_stop
+        do_start
+    }
+    # función que muestra el estado de 'demonio'
+    function do_status() {
+        # si exite el fichero
+        if [ -e $PIDFILE ]; then
+            echo "Ejecutandose..."
+        else
+            echo "Parado."
+        fi
+    }
+    # si primer parámetro == '­h' o == '­­help'
+    if [ "$1" == "-h" -o "$1" == "--help" ]; then
+        ayuda
+        exit 0
+    fi
+    case $1 in
+    start)
+        do_start
+        ;;
+    stop)
+        do_stop
+        ;;
+    restart)
+        do_restart
+        ;;
+    status)
+        do_status
+        ;;
+    *)
+        echo "Parámetro '$1' incorrecto."
+        ;;
+    esac
+}
+
+Interface

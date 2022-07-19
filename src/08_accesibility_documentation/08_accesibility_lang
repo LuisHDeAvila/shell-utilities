@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# traduce solo el texto que se encuentra despues del simbolo numeral, que comunmente corresponden a comentarios.
+INPUT="$1"
+traducir_comentarios()
+{
+cat "$INPUT" | while read line; do 
+  EVAL=$(echo $line | grep -c '#')
+
+  if (( $EVAL==0 )); then 
+    echo "$line"
+  else
+    COMENT=`echo "$line" | awk -F'#' '{print $2}' | trans -b :es`
+    echo "`echo $line | awk -F'#' '{print $1}'` # $COMENT"
+  fi
+done 2> /dev/null
+}
+
+traducir_comentarios > "`echo $INPUT | awk -F. '{print $1}'`_es.txt"
+echo -e "\e[3;31;40m se han traducido solamente los comentarios \e[m"

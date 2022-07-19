@@ -1,0 +1,570 @@
+ # !/bin/bash
+ # 
+ # ATAJOS e HISTORIA
+ # 
+
+CTRL+A  # mover al principio de la línea
+CTRL+B  # retrocede un carácter
+CTRL+C  # detiene el comando actual
+CTRL+D  # elimina un carácter hacia atrás o cierra la sesión actual, similar a salir
+CTRL+E  # se mueve al final de la línea
+CTRL+F  # avanza un caracter
+CTRL+G  # aborta el comando de edición actual y toca el timbre del terminal
+CTRL+H  # elimina un carácter debajo del cursor (igual que ELIMINAR)
+CTRL+J  # igual que VOLVER
+CTRL+K  # elimina (mata) adelante hasta el final de la línea
+CTRL+L  # borra la pantalla y vuelve a mostrar la línea
+CTRL+M  # igual que VOLVER
+CTRL+N  # siguiente línea en el historial de comandos
+CTRL+O  # igual que RETURN, luego muestra la siguiente línea en el archivo de historial
+CTRL+P  # línea anterior en el historial de comandos
+CTRL+Q  # reanuda la salida de shell suspendida
+CTRL+R  # busca hacia atrás
+CTRL+S  # busca hacia adelante o suspende la salida de shell
+CTRL+T  # transpone dos caracteres
+CTRL+U  # mata hacia atrás desde el punto hasta el comienzo de la línea
+CTRL+V  # hace que el siguiente carácter se escriba textualmente
+CTRL+W  # mata la palabra detrás del cursor
+CTRL+X  # enumera las posibles terminaciones de nombre de archivo de la palabra actual
+CTRL+Y  # recupera (tira) el último elemento eliminado
+CTRL+Z  # detiene el comando actual, reanuda con fg en primer plano o bg en segundo plano
+
+ALT+B  # retrocede una palabra
+ALT+D  # elimina la siguiente palabra
+ALT+F  # avanza una palabra
+ALT+H  # borra un carácter hacia atrás
+ALT+T  # transpone dos palabras
+ALT+.  # pega la última palabra del último comando. Presionándolo repetidamente se recorre el historial de comandos.
+ALT+U  # escribe en mayúscula cada carácter desde la posición actual del cursor hasta el final de la palabra
+ALT+L  # elimina todos los caracteres desde la posición actual del cursor hasta el final de la palabra
+ALT+C  # escribe en mayúscula la letra debajo del cursor. El cursor luego se mueve al final de la palabra.
+ALT+R  # revierte cualquier cambio en un comando que haya extraído de su historial si lo ha editado.
+ALT+?  # enumerar las posibles terminaciones de lo que se escribe
+ALT+^  # expandir la línea a la coincidencia más reciente del historial
+
+CTRL+X then (  # comenzar a grabar una macro de teclado
+CTRL+X then )  # terminar de grabar la macro del teclado
+CTRL+X then E  # recuperar la última macro de teclado grabada
+CTRL+X then CTRL+E  # invoque el editor de texto (especificado por $EDITOR) en la línea de comando actual y luego ejecute los resultados como comandos de shell
+CTRL+A then D  # cierre sesión en la pantalla pero no lo elimine, si existe algún comando, continuará
+
+BACKSPACE  # borra un carácter hacia atrás
+DELETE  # borra un caracter debajo del cursor
+
+history  # muestra el historial de la línea de comandos
+!!  # repite el último comando
+!<n>  # se refiere a la línea de comando 'n'
+!<string>  # se refiere al comando que comienza con 'cadena'
+esc :wq  # sale y guarda el script
+
+exit  # cierra la sesión actual
+
+
+ # 
+ # BÁSICOS BÁSICOS
+ # 
+
+env  # muestra todas las variables de entorno
+
+echo $SHELL  # muestra el shell que estás usando
+echo $BASH_VERSION  # muestra la versión bash
+
+bash  # si desea usar bash (escriba exit para volver a su shell abierto previamente)
+whereis bash  # localiza la página binaria, fuente y manual para un comando
+which bash  # descubre qué programa se ejecuta como 'bash' (predeterminado: /bin/bash, puede cambiar entre entornos)
+
+clear  # borra el contenido de la ventana (oculta las líneas mostradas)
+
+
+ # 
+ # COMANDOS DE ARCHIVO
+ # 
+
+
+ls  # enumera sus archivos en el directorio actual, ls <dir> para imprimir archivos en un directorio específico
+ls -l  # enumera sus archivos en 'formato largo', que contiene el tamaño exacto del archivo, quién es el propietario del archivo y quién tiene derecho a verlo, y cuándo se modificó por última vez
+ls -a  # enumera todos los archivos en 'formato largo', incluidos los archivos ocultos (nombre que comienza con '.')
+ln -s <filename> <link>  # crea un enlace simbólico al archivo
+readlink <filename>  # muestra a dónde apunta un enlace simbólico
+tree  # mostrar directorios y subdirectorios en un árbol de archivos fácilmente legible
+mc  # explorador de archivos de terminal (alternativa a ncdu)
+touch <filename>  # crea o actualiza (edita) su archivo
+mktemp -t <filename>  # crea un archivo temporal en /tmp/ que se elimina en el siguiente arranque (-d para hacer el directorio)
+cat <filename>  # muestra el contenido sin procesar del archivo (no se interpretará)
+cat -n <filename>  # muestra el número de líneas
+nl <file.sh>  # muestra el número de líneas en el archivo
+cat filename1 > filename2  # Copie el nombre de archivo1 al nombre de archivo2
+cat filename1 >> filename2  # fusionar dos archivos de texto juntos
+any_command > <filename>  # '>' se usa para realizar redirecciones, establecerá la salida estándar de any_command en el archivo en lugar de "salida estándar real" (generalmente /dev/stdout)
+more <filename>  # muestra la primera parte de un archivo (mover con espacio y escribir q para salir)
+head <filename>  # genera las primeras líneas del archivo (predeterminado: 10 líneas)
+tail <filename>  # genera las últimas líneas del archivo (útil con la opción -f) (predeterminado: 10 líneas)
+vim <filename>  # abre un archivo en el editor de texto VIM (VI mejorado), lo creará si no existe
+mv <filename1> <dest>  # mueve un archivo al destino, el comportamiento cambiará según el tipo de 'dest' (dir: el archivo se coloca en dir; file: el archivo reemplazará a dest (consejo: útil para cambiar el nombre))
+cp <filename1> <dest>  # copia un archivo
+rm <filename>  # elimina un archivo
+find . -name <name> <type>  # busca un archivo o un directorio en el directorio actual y todos sus subdirectorios por su nombre
+diff <filename1> <filename2>  # compara archivos y muestra dónde difieren
+wc <filename>  # le dice cuántas líneas, palabras y caracteres hay en un archivo. Use -lwc (líneas, palabra, carácter) para generar solo 1 de esas informaciones
+sort <filename>  # ordena el contenido de un archivo de texto línea por línea en orden alfabético, use -n para ordenar numéricamente y -r para invertir el orden.
+sort -t -k <filename>  # ordena el contenido en un campo de clave de clasificación específico a partir de 1, utilizando el separador de campo t.
+rev  # caracteres de cadena inversa (hola se convierte en olleh)
+chmod -options <filename>  # le permite cambiar los permisos de lectura, escritura y ejecución en sus archivos (más información: SUID, GUID)
+gzip <filename>  # comprime archivos usando el algoritmo gzip
+gunzip <filename>  # descomprime archivos comprimidos por gzip
+gzcat <filename>  # le permite ver el archivo comprimido con gzip sin tener que descomprimirlo
+lpr <filename>  # imprime el archivo
+lpq  # comprueba la cola de la impresora
+lprm <jobnumber>  # elimina algo de la cola de la impresora
+genscript  # convierte archivos de texto sin formato en postscript para imprimir y le brinda algunas opciones para formatear
+dvips <filename>  # imprime archivos .dvi (es decir, archivos producidos por LaTeX)
+grep <pattern> <filenames>  # busca la cadena en los archivos
+grep -r <pattern> <dir>  # buscar recursivamente el patrón en el directorio
+head -n file_name | tail +n  # Imprime la enésima línea del archivo.
+head -y lines.txt | tail +x  # desea mostrar todas las líneas de x a y. Esto incluye las líneas x y y.
+
+sed 's/<pattern>/<replacement>/g' <filename>  # reemplace el patrón en el archivo con el valor de reemplazo para la salida estándar del carácter después de s (/) es el delimitador
+sed -i 's/<pattern>/<replacement>/g' <filename>  # reemplazar el patrón en el archivo con el valor de reemplazo en su lugar
+echo "this" | sed 's/is/at/g'  # reemplazar el patrón del flujo de entrada con el valor de reemplazo
+
+ # 
+ # COMANDOS DE DIRECTORIO
+ # 
+
+
+mkdir <dirname>  # hace un nuevo directorio
+rmdir <dirname>  # eliminar un directorio vacío
+rmdir -rf <dirname>  # eliminar un directorio no vacío
+mv <dir1> <dir2>  # cambiar el nombre de un directorio de <dir1> a <dir2>
+cd  # cambios en el hogar
+cd ..  # cambios en el directorio principal
+cd <dirname>  # cambia de directorio
+cp -r <dir1> <dir2>  # copie <dir1> en <dir2> incluidos los subdirectorios
+pwd  # te dice donde te encuentras actualmente
+cd ~  # cambios en el hogar.
+cd -  # cambios al directorio de trabajo anterior
+
+ # 
+ # SSH, INFORMACIÓN DEL SISTEMA Y COMANDOS DE RED
+ # 
+
+
+ssh user@host  # se conecta al host como usuario
+ssh -p <port> user@host  # se conecta al host en el puerto especificado como usuario
+ssh-copy-id user@host  # agrega su clave ssh al host para que el usuario habilite un inicio de sesión con clave o sin contraseña
+
+whoami  # devuelve tu nombre de usuario
+su <user>  # cambiar a un usuario diferente
+su -  # cambie a root, probablemente deba ser sudo su -
+sudo <command>  # ejecutar comando como usuario root
+passwd  # te permite cambiar tu contraseña
+quota -v  # muestra cuál es su cuota de disco
+date  # muestra la fecha y hora actual
+cal  # muestra el calendario del mes
+uptime  # muestra el tiempo de actividad actual
+w  # muestra whois en línea
+finger <user>  # muestra información sobre el usuario
+uname -a  # muestra información del kernel
+man <command>  # muestra el manual para el comando especificado
+info <command>  # muestra otro sistema de documentación para el comando específico
+help  # muestra documentación sobre funciones y comandos incorporados
+df  # muestra el uso del disco
+du <filename>  # muestra el uso de disco de los archivos y directorios en nombre de archivo (du -s da solo un total)
+resize2fs  # redimensionador del sistema de archivos ext2/ext3/ext4
+last <yourUsername>  # enumera sus últimos inicios de sesión
+ps -u yourusername  # enumera sus procesos
+kill <PID>  # mata los procesos con la ID que diste
+killall <processname>  # matar todos los procesos con el nombre
+top  # muestra sus procesos actualmente activos
+lsof  # enumera los archivos abiertos
+bg  # enumera los trabajos detenidos o en segundo plano; reanudar un trabajo detenido en segundo plano
+fg  # trae el trabajo más reciente en primer plano
+fg <job>  # pone el trabajo en primer plano
+
+ping <host>  # hace ping al host y genera resultados
+whois <domain>  # obtiene información whois para el dominio
+dig <domain>  # obtiene información de DNS para el dominio
+dig -x <host>  # host de búsqueda inversa
+wget <file>  # archivo de descargas
+netstat  # Imprima conexiones de red, tablas de enrutamiento, estadísticas de interfaz, conexiones enmascaradas y membresías de multidifusión
+
+time <command>  # informe el tiempo consumido por la ejecución del comando
+
+
+ # 
+ # VARIABLES
+ # 
+
+
+varname=value  # define una variable
+varname=value command  # define una variable para estar en el entorno de un subproceso particular
+echo $varname  # comprueba el valor de una variable
+echo $$  # imprime el ID de proceso del shell actual
+echo $!  # imprime el ID de proceso del trabajo en segundo plano invocado más recientemente
+echo $?  # muestra el estado de salida del último comando
+read <varname>  # lee una cadena de la entrada y la asigna a una variable
+read -p "prompt" <varname>  # Igual que el anterior, pero genera un aviso para pedirle al usuario un valor.
+column -t <filename>  # mostrar información en columnas bonitas (a menudo se usa con tubería)
+let <varname> = <equation>  # realiza cálculos matemáticos usando operadores como +, -, *, /, %
+export VARNAME=value  # define una variable de entorno (estará disponible en los subprocesos)
+export -f <funcname>  # Exporta la función 'funcname'
+export var1="var1 value"  # Exportar y asignar en la misma declaración
+export <varname>  # Copiar variable Bash
+declare -x <varname>  # Copiar variable Bash
+
+array[0]=valA  # cómo definir una matriz
+array[1]=valB
+array[2]=valC
+array=([2]=valC [0]=valA [1]=valB)  # de otra manera
+array=(valA valB valC)  # y otro
+
+${array[i]}  # muestra el valor de la matriz para este índice. Si no se proporciona ningún índice, se asume el elemento de matriz 0
+${ # matriz[i]}
+${ # formación[@]}
+
+declare -a  # las variables se tratan como matrices
+declare -f  # usa solo nombres de funciones
+declare -F  # muestra nombres de funciones sin definiciones
+declare -i  # las variables se tratan como enteros
+declare -r  # hace que las variables sean de solo lectura
+declare -x  # marca las variables para exportar a través del entorno
+declare -l  # los valores en mayúsculas en la variable se convierten a minúsculas
+declare -A  # lo convierte en una matriz asociativa
+
+${varname:-word}  # si varname existe y no es nulo, devuelve su valor; de lo contrario devolver palabra
+${varname:word}  # si varname existe y no es nulo, devuelve su valor; de lo contrario devolver palabra
+${varname:=word}  # si varname existe y no es nulo, devuelve su valor; de lo contrario, establezca la palabra y luego devuelva su valor
+${varname:?message}  # si varname existe y no es nulo, devuelve su valor; de lo contrario, imprima varname, seguido de un mensaje y anule el comando o script actual
+${varname:+word}  # si varname existe y no es nulo, devuelve palabra; de lo contrario devolver nulo
+${varname:offset:length}  # realiza la expansión de subcadenas. Devuelve la subcadena de $varname comenzando en el desplazamiento y hasta caracteres de longitud
+
+${variable # patrón}
+${variable # 
+${variable%pattern}  # si el patrón coincide con el final del valor de la variable, elimine la parte más corta que coincida y devuelva el resto
+${variable%%pattern}  # si el patrón coincide con el final del valor de la variable, elimine la parte más larga que coincida y devuelva el resto
+${variable/pattern/string}  # la coincidencia más larga con el patrón en la variable se reemplaza por una cadena. Solo se reemplaza el primer partido.
+${variable//pattern/string}  # la coincidencia más larga con el patrón en la variable se reemplaza por una cadena. Todos los partidos son reemplazados
+
+${ # en orden alfabético
+
+*(patternlist)  # coincide con cero o más ocurrencias de los patrones dados
++(patternlist)  # coincide con una o más ocurrencias de los patrones dados
+?(patternlist)  # coincide con cero o una ocurrencia de los patrones dados
+@(patternlist)  # coincide exactamente con uno de los patrones dados
+!(patternlist)  # coincide con cualquier cosa excepto con uno de los patrones dados
+
+$(UNIX command)  # sustitución de comando: ejecuta el comando y devuelve la salida estándar
+
+typeset -l <x>  # hacer variable local - <x> debe ser un número entero
+
+ # 
+ # FUNCIONES
+ # 
+
+
+ # La función hace referencia a los argumentos pasados por posición (como si fueran parámetros posicionales), es decir, $1, $2, etc.
+ # $@ es igual a "$1" "$2"... "$N", donde N es el número de parámetros posicionales. ps
+
+
+function functname() {
+shell commands
+}
+
+unset -f functname  # elimina una definición de función
+declare -f  # muestra todas las funciones definidas en su sesión de inicio de sesión
+
+
+ # 
+ # CONTROLES DE FLUJO
+ # 
+
+
+statement1 && statement2  # y operador
+statement1 || statement2  # u operador
+
+-a  # y operador dentro de una expresión condicional de prueba
+-o  # u operador dentro de una expresión condicional de prueba
+
+ # INSTRUMENTOS DE CUERDA
+
+str1 == str2  # str1 coincide con str2
+str1 != str2  # str1 no coincide con str2
+str1 < str2  # str1 es menor que str2 (alfabéticamente)
+str1 > str2  # str1 es mayor que str2 (alfabéticamente)
+str1 > str2  # str1 se ordena después de str2
+str1 < str2  # str1 se ordena antes que str2
+str1  # str1 no es nulo (tiene una longitud mayor que 0)
+-z str1  # str1 es nulo (tiene longitud 0)
+
+ # ARCHIVOS
+
+-a file  # el archivo existe o su compilación es exitosa
+-d file  # el archivo existe y es un directorio
+file  # El archivo existe; mismo -a
+-f file  # el archivo existe y es un archivo normal (es decir, no es un directorio u otro tipo especial de archivo)
+-r file  # tienes permiso de lectura
+-s file  # el archivo existe y no está vacío
+-w file  # tu tienes permiso de escritura
+-x file  # tiene permiso de ejecución en el archivo, o permiso de búsqueda de directorio si es un directorio
+-N file  # el archivo se modificó desde la última vez que se leyó
+-O file  # tu propio archivo
+-G file  # el ID de grupo del archivo coincide con el suyo (o uno de los suyos, si está en varios grupos)
+file1 -nt file2  # file1 es más nuevo que file2
+file1 -ot file2  # el archivo1 es más antiguo que el archivo2
+
+ # NÚMEROS
+
+-lt  # menos que
+-le  # menor o igual
+-eq  # igual
+-ge  # mayor que o igual
+-gt  # mas grande que
+ # no es igual
+
+if condition
+then
+statements
+[elif condition
+then statements...]
+[else
+statements]
+fi
+
+for x in {1..10}
+do
+statements
+done
+
+for name [in list]
+do
+statements that can use $name
+done
+
+for (( initialisation ; ending condition ; update ))
+do
+statements...
+done
+
+case expression in
+pattern1 )
+statements ;;
+pattern2 )
+statements ;;
+esac
+
+select name [in list]
+do
+statements that can use $name
+done
+
+while condition; do
+statements
+done
+
+until condition; do
+statements
+done
+
+ # 
+ # CICLO DE PROCESAMIENTO DE LA LÍNEA DE COMANDOS
+ # 
+
+
+ # El orden predeterminado para la búsqueda de comandos son las funciones, seguidas de las integradas, con los scripts y los ejecutables al final.
+ # Hay tres incorporados que puede usar para anular este orden: `comando`, `integrado` y `habilitar`.
+
+command  # elimina el alias y la función de búsqueda. Solo se ejecutan los integrados y los comandos que se encuentran en la ruta de búsqueda
+builtin  # busca solo los comandos incorporados, ignorando las funciones y los comandos que se encuentran en PATH
+enable  # habilita y deshabilita las funciones integradas de shell
+
+eval  # toma argumentos y los ejecuta a través de los pasos de procesamiento de la línea de comandos de nuevo
+
+
+ # 
+ # REDIRECCIONES DE ENTRADA/SALIDA
+ # 
+
+
+cmd1|cmd2  # tubo; toma la salida estándar de cmd1 como entrada estándar para cmd2
+< file  # toma la entrada estándar del archivo
+> file  # dirige la salida estándar al archivo
+>> file  # dirige la salida estándar al archivo; agregar al archivo si ya existe
+>|file  # fuerza la salida estándar al archivo incluso si se establece noclobber
+n>|file  # fuerza la salida al archivo desde el descriptor de archivo n incluso si se establece noclobber
+<> file  # utiliza el archivo como entrada y salida estándar
+n<>file  # usa el archivo como entrada y salida para el descriptor de archivo n
+n>file  # dirige el descriptor de archivo n al archivo
+n<file  # toma el descriptor de archivo n del archivo
+n>>file  # dirige la descripción del archivo n al archivo; agregar al archivo si ya existe
+n>&  # duplica la salida estándar al descriptor de archivo n
+n<&  # duplica la entrada estándar del descriptor de archivo n
+n>&m  # el descriptor de archivo n está hecho para ser una copia del descriptor de archivo de salida
+n<&m  # el descriptor de archivo n está hecho para ser una copia del descriptor de archivo de entrada
+&>file  # dirige la salida estándar y el error estándar al archivo
+<&-  # cierra la entrada estándar
+>&-  # cierra la salida estándar
+n>&-  # cierra la salida del descriptor de archivo n
+n<&-  # cierra la entrada del descriptor de archivo n
+
+|tee <file> # Comando de salida tanto a la terminal como a un archivo (-a para agregar al archivo)
+
+
+ # 
+ # MANEJO DE PROCESOS
+ # 
+
+
+ # Para suspender un trabajo, escriba CTRL+Z mientras se está ejecutando. También puede suspender un trabajo con CTRL+Y.
+ # Esto es ligeramente diferente de CTRL+Z en que el proceso solo se detiene cuando intenta leer la entrada de la terminal.
+ # Por supuesto, para interrumpir un trabajo, teclee CTRL+C.
+
+myCommand &  # ejecuta el trabajo en segundo plano y vuelve a solicitar el shell
+
+jobs  # enumera todos los trabajos (úselo con -l para ver el PID asociado)
+
+fg  # trae un trabajo de fondo al primer plano
+fg %+  # trae el trabajo en segundo plano invocado más recientemente
+fg %-  # trae el segundo trabajo en segundo plano invocado más recientemente
+fg %N  # trae trabajo número N
+fg %string  # trae trabajo cuyo comando comienza con cadena
+fg %?string  # trae trabajo cuyo comando contiene una cadena
+
+kill -l  # devuelve una lista de todas las señales en el sistema, por nombre y número
+kill PID  # termina el proceso con el PID especificado
+kill -s SIGKILL 4500  # envía una señal para forzar o terminar el proceso
+kill -15 913  # Terminando proceso PID 913 con señal 15 (TERM)
+kill %1  # Donde %1 es el número de trabajos leídos del comando 'jobs'.
+
+ps  # imprime una línea de información sobre el shell de inicio de sesión en ejecución actual y cualquier proceso que se ejecute debajo de él
+ps -a  # selecciona todos los procesos con un tty excepto los líderes de sesión
+
+trap cmd sig1 sig2  # ejecuta un comando cuando el script recibe una señal
+trap "" sig1 sig2  # ignora esas señales
+trap - sig1 sig2  # restablece la acción tomada cuando se recibe la señal al valor predeterminado
+
+disown <PID|JID>  # elimina el proceso de la lista de trabajos
+
+wait  # espera hasta que todos los trabajos en segundo plano hayan terminado
+sleep <number>  # Espere
+
+pv  # muestra la barra de progreso para los comandos de manejo de datos. a menudo se usa con tubería como |pv
+yes  # dar una respuesta afirmativa cada vez que se solicite una entrada desde el script/proceso
+
+
+ # 
+ # CONSEJOS Y TRUCOS
+ # 
+
+
+ # establecer un alias
+cd; nano .bash_profile
+> alias gentlenode='ssh admin@gentlenode.com -p 3404'  # agrega tu alias en .bash_profile
+
+ # para ir rápidamente a un directorio específico
+cd; nano .bashrc
+> shopt -s cdable_vars
+> export websites="/Users/mac/Documents/websites"
+
+source .bashrc
+cd $websites
+
+
+ # 
+ # DEPURACIÓN DE PROGRAMAS SHELL
+ # 
+
+
+bash -n scriptname  # no ejecute comandos; comprobar sólo los errores de sintaxis
+set -o noexec  # alternativa (establecer opción en script)
+
+bash -v scriptname  # comandos de eco antes de ejecutarlos
+set -o verbose  # alternativa (establecer opción en script)
+
+bash -x scriptname  # comandos de eco después del procesamiento de la línea de comandos
+set -o xtrace  # alternativa (establecer opción en script)
+
+trap 'echo $varname' EXIT  # útil cuando desea imprimir los valores de las variables en el punto en que sale su secuencia de comandos
+
+function errtrap {
+es=$?
+echo "ERROR line $1: Command exited with status $es."
+}
+
+trap 'errtrap $LINENO' ERR  # se ejecuta cada vez que un comando en el script o función circundante sale con un estado distinto de cero
+
+function dbgtrap {
+echo "badvar is $badvar"
+}
+
+trap dbgtrap DEBUG  # hace que el código trampa se ejecute antes de cada declaración en una función o secuencia de comandos
+ # ...sección de código en la que ocurre el problema...
+trap - DEBUG  # desactivar la trampa DEBUG
+
+function returntrap {
+echo "A return occurred"
+}
+
+trap returntrap RETURN  # se ejecuta cada vez que se ejecuta una función de shell o un script con . o los comandos fuente terminan de ejecutarse
+
+ # 
+ # COLORES Y FONDOS
+ # 
+ # nota: e o x1B también funcionan en lugar de 033
+ # Reiniciar
+Color_Off='033[0m'  # Restablecimiento de texto
+
+ # Colores Regulares
+Black='033[0;30m'  # Negro
+Red='033[0;31m'  # Rojo
+Green='033[0;32m'  # Verde
+Yellow='033[0;33m'  # Amarillo
+Blue='033[0;34m'  # Azul
+Purple='033[0;35m'  # Violeta
+Cyan='033[0;36m'  # cian
+White='033[0;97m'  # Blanco
+
+ # Colores adicionales
+LGrey='033[0;37m'  # Gris claro
+DGrey='033[0;90m'  # Gris oscuro
+LRed='033[0;91m'  # Luz roja
+LGreen='033[0;92m'  # Verde claro
+LYellow='033[0;93m' # Amarillo claro
+LBlue='033[0;94m'  # Azul claro
+LPurple='033[0;95m' # Púrpura claro
+LCyan='033[0;96m'  # Cian claro
+
+
+ # Audaz
+BBlack='033[1;30m'  # Negro
+BRed='033[1;31m'  # Rojo
+BGreen='033[1;32m'  # Verde
+BYellow='033[1;33m' # Amarillo
+BBlue='033[1;34m'  # Azul
+BPurple='033[1;35m' # Violeta
+BCyan='033[1;36m'  # cian
+BWhite='033[1;37m'  # Blanco
+
+ # Subrayar
+UBlack='033[4;30m'  # Negro
+URed='033[4;31m'  # Rojo
+UGreen='033[4;32m'  # Verde
+UYellow='033[4;33m' # Amarillo
+UBlue='033[4;34m'  # Azul
+UPurple='033[4;35m' # Violeta
+UCyan='033[4;36m'  # cian
+UWhite='033[4;37m'  # Blanco
+
+ # Fondo
+On_Black='033[40m'  # Negro
+On_Red='033[41m'  # Rojo
+On_Green='033[42m'  # Verde
+On_Yellow='033[43m' # Amarillo
+On_Blue='033[44m'  # Azul
+On_Purple='033[45m' # Violeta
+On_Cyan='033[46m'  # cian
+On_White='033[47m'  # Blanco
+
+ # Ejemplo de uso
+echo -e "${Green}This is GREEN text${Color_Off} and normal text"
+echo -e "${Red}${On_White}This is Red test on White background${Color_Off}"
+ # la opción -e es obligatoria, permite la interpretación de escapes de barra invertida
