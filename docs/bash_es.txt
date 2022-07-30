@@ -69,7 +69,7 @@ env  # muestra todas las variables de entorno
 echo $SHELL  # muestra el shell que estás usando
 echo $BASH_VERSION  # muestra la versión bash
 
-bash  # si desea usar bash (escriba exit para volver a su shell abierto previamente)
+bash  # si desea usar bash (escriba exit para volver a su shell abierto anteriormente)
 whereis bash  # localiza la página binaria, fuente y manual para un comando
 which bash  # descubre qué programa se ejecuta como 'bash' (predeterminado: /bin/bash, puede cambiar entre entornos)
 
@@ -568,3 +568,4 @@ On_White='033[47m'  # Blanco
 echo -e "${Green}This is GREEN text${Color_Off} and normal text"
 echo -e "${Red}${On_White}This is Red test on White background${Color_Off}"
  # la opción -e es obligatoria, permite la interpretación de escapes de barra invertida
+printf "${Red} This is red n"

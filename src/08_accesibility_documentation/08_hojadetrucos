@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+function create_cheatsheet()
+{
+	curl cheat.sh/$1 > $1.txt
+}
+
+create_cheatsheet $1
