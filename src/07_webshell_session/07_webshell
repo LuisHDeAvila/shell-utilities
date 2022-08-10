@@ -1,6 +1,7 @@
 #!/bin/bash
 : ' 
 	crear una plataforma de despliegue de shell sobre la web
+	** no esta terminado **
 '
 # colors
 green=32; red=31; blue=34; yellow=33; purple=35; cian=36; gray=37
