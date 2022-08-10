@@ -35,3 +35,7 @@ en fin, solo explico estas cosas para aburrir a los curiosos. explora un poco la
 ```
   05_enumeracion_userdir
 ```
+#### script: encriptacion
+```
+  11_encrypt.sh
+```

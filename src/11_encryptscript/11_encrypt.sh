@@ -7,3 +7,5 @@ read -p 'filename: ' S && C=$S.crypt H='eval "$((dd if=$0 bs=1 skip=//|gpg -d)2>
 
 echo ' 	encriptacion de scripts '
 encryptscript "$1"
+
+echo "$1.crypt creado en directorio $PWD"
