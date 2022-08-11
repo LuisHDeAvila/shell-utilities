@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+function out(){
+  espeak-ng -v "es-419" "$1"
+}
+out 'voy a explotar'
+
+for (( t=10;t>0;t--)); do
+  out "$t"
+  sleep 0.5s
+done
+

@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 # funciones utiles sobre protocolo http
+# ** no esta terminado **
 URL="$1"
-if [ `ping "$URL"` -eq "0" ]; then
-    
-fi
+function target {
+    whatweb "$1" | 
+}
+# if [ `ping "$URL"` -eq "0" ]; then
+
+# fi
 function checkbrokenlinks()
 {
 wget --spider -nd -e robots=off -prb -o wget-log -nv "$1"
@@ -40,4 +44,4 @@ function reconocimiento()
 
 }
 
-reconocimiento 'youtube.com'
+reconocimiento "$1"

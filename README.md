@@ -1,5 +1,5 @@
 # Shell Scripting
-Repositorio dedicado a desarrollo de shell scripting con BASH (bourne again shell).
+Repositorio dedicado a desarrollo de *shell scripting* con BASH* (bourne again shell).
 
 se abordan aspectos importantes del sistema operativo, como ejemplo, el script 05_copias_de_seguridad.sh trata de persistencia de la informacion y control de versiones.
 Es de mucha utilidad cuando trabajo con sistemas operativos lanzados desde un pendrive, y deseo guardar todo lo que se haya creado en el directorio de usuario, que es un usuario temporal, que existe solo en la memoria ram, y en el momento de apagar el sistema, ese directorio de usuario es eliminado, lo que se traduce como perdida de informacion y al configurar una particion persistente, muchas veces es todo

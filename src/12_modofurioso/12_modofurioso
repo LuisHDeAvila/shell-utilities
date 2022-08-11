@@ -1,0 +1,13 @@
+#!/bin/bash
+# Desactiva temporalmente el aslr, para sesiones de "kernel exploiting"
+
+function ojosfuriosos()
+{
+echo "==== ASLR disabled for this session ===="
+
+setarch "$(uname -m)" -R bash --rcfile <(echo "PS1='no-aslr $ '") -i
+
+echo "==== ASLR re-enabled ===="
+}
+
+(ojosfuriosos)
