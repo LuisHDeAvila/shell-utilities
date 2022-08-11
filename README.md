@@ -15,6 +15,13 @@ Representa una solucion para el siguiente problema: cuando trabajo con sistemas 
 en fin, solo explico estas cosas para aburrir a los curiosos. explora un poco las posibilidades. imagina cambiar la realidad, modificando el orden de los sucesos, y luego hazlo realidad con el script 04_metadata, para que puedas afirmar con toda seguridad que de ningun modo puedes aceptar la responsabilidad por algo que sucedio el 30 de febrero. (ja ja)
 
 ## Contenido
+#### ejecucion de scripts:
+```
+  # bash
+  chmod +x [script_name]
+  ./[script_name]
+```
+
 #### script: configura la linea de comandos para ejecutar scripts creados por el usuario
 ```
   00_scripts_to_commands
@@ -39,7 +46,17 @@ en fin, solo explico estas cosas para aburrir a los curiosos. explora un poco la
   05_enumeracion_userdir
 ```
 
+#### script: webshell con tty. 
+```
+  07_webshell
+```
+
 #### script: encriptacion.
 ```
-  11_encrypt.sh
+  11_encrypt
+```
+
+#### script: entorno para explotacion del kernel de acceso rapido.
+```
+  12_modofurioso
 ```
