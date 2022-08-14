@@ -3,11 +3,11 @@
 
 function ojosfuriosos()
 {
-echo "==== ASLR disabled for this session ===="
-
+echo '   :.:.:.:. ----= Hack the world =---- .:.:.:.:'
+echo -e "\n\nASLR disabled for this session \n"
 setarch "$(uname -m)" -R bash --rcfile <(echo "PS1='no-aslr $ '") -i
-
 echo "==== ASLR re-enabled ===="
 }
+
 
 (ojosfuriosos)
