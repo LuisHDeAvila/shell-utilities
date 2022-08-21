@@ -8,3 +8,9 @@ https://asanzdiego.github.io/curso-nivelacion-bigdata-2017/
 
 ##### 40 ejemplos de shell scripting
 https://www.ubuntupit.com/simple-yet-effective-linux-shell-script-examples/
+
+##### Administracion de Linux con bash
+https://devconnected.com/category/linux-administration/
+
+##### Offensive security cheatsheets
+https://cheatsheet.haax.fr/linux-systems/privilege-escalation/suid/

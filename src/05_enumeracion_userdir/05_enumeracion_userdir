@@ -22,7 +22,7 @@ FLAGS:
 -l [...n]: muestra la localizacion de archivos, por extension (list)
 
 EXAMPLES:
-$0 mp4 mp3 mkv webp jpg png
+$0 mp4 mp3 mkv webp php rsa
 $0 -l zip
 
 AYUDA

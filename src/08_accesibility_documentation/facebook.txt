@@ -1,7 +1,0 @@
-Unknown topic.
-Do you mean one of these topics maybe?
-
-    * fakeroot 62
-    * fastboot 62
-    * factor 57
-    

@@ -1,7 +1,7 @@
 # Shell Scripting
 Repositorio dedicado a desarrollo de *shell scripting* con BASH* (bourne again shell).
 
-se abordan aspectos importantes del sistema operativo, como ejemplo, el script 05_copias_de_seguridad.sh trata de persistencia de la informacion y control de versiones.
+Se abordan aspectos importantes del sistema operativo Linux, como ejemplo, el script 05_copias_de_seguridad.sh trata de persistencia de la informacion y control de versiones.
 Representa una solucion para el siguiente problema: cuando trabajo con sistemas operativos booteados desde un pendrive//liveusb, y deseo guardar todo lo que se haya creado en el directorio de usuario (cookies, dotfiles, metadatos, archivos multimedia, ficheros de extracto, etc) se vuelve muy redundante porque se trata de un usuario temporal que existe solo en la memoria ram, asi que al apagar el sistema, ese directorio de usuario es eliminado, lo que se traduce como perdida de informacion valiosa, una opcion es configurar persistencia en el pendrive//liveusb pero esto no es lo adecuado porque tambien las configuraciones se vuelven persistentes, y no siempre es necesario configurar el sistema que ya viene por defecto en el booteable, asi que esta solucion es perfecta para resolver dicha necesidad, ejemplo de uso de este script:
 ```
 #: fdisk -l

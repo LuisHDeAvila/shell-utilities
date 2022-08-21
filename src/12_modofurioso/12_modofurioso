@@ -3,7 +3,7 @@
 
 function ojosfuriosos()
 {
-echo '   :.:.:.:. ----= Hack the world =---- .:.:.:.:'
+echo '   :.:.:.:. ----= Memory protection OFF =---- .:.:.:.:'
 echo -e "\n\nASLR disabled for this session \n"
 setarch "$(uname -m)" -R bash --rcfile <(echo "PS1='no-aslr $ '") -i
 echo "==== ASLR re-enabled ===="
