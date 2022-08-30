@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # traduce solo el texto que se encuentra despues del simbolo numeral, que comunmente corresponden a comentarios.
+# util para traducir comentarios, sin modificar el codigo fuente de un programa
 INPUT="$1"
 traducir_comentarios()
 {

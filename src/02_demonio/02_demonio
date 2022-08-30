@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+: '
+	creacion de servicio (daemon)
+'
 
 function alerta()
 {

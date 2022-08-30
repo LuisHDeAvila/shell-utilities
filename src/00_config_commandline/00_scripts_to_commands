@@ -1,7 +1,6 @@
 #!/bin/bash
 # directorio de scripts
 DIRSCRIPTS=~/.myscripts
-
 function configuracion()
 {
 mkdir $DIRSCRIPTS 

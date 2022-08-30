@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# crea una hoja de trucos con el query proporcionado como parametro
 function create_cheatsheet()
 {
 	curl cheat.sh/$1 > $1.txt

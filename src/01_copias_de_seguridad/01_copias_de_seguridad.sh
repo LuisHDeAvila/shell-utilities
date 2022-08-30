@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 : '
-  title: file system enum
-  author: eleAche
-  description: crea una enumeracion de archivos, cada 10 minutos.
-
-
-
+  rutina de creacion de copias de seguridad diferenciales de forma incremental.
 '
 # color suport
 red_="\e[1;31m\033[1m"

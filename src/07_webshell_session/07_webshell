@@ -1,6 +1,6 @@
 #!/bin/bash
 : ' 
-	crear una plataforma de despliegue de shell sobre la web
+	crear una plataforma de despliegue de shell (tty) sobre una web.
 	** no esta terminado **
 '
 # colors

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# funcion de sintesis de voz para la linea de comandos.
 function out(){
   espeak-ng -v "es-419" "$1"
 }
