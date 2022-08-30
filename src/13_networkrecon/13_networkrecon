@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo {1..254} | tr ' ' '\n'  | while read host; do
-	echo 'ping -c 1 -W 1 192.168.1.'$host 
-done | bash &
+	echo 'ping -c 1 192.168.1.'"$host"
+done | bash & 2>/dev/null
