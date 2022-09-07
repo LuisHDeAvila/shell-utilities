@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+: '
+	agenda:
+		Crea registros cada vez que se agrega alguna nota, solo crea un fichero al dia, y durante el dia se puede abrir las veces que sea necesario
+'
+# fecha en formato humano
+HUMANDATE=`TZ=Mexico/General date '+%D %H:%M:%S'`
+# fecha en D/M/A
+DATE=`date +%d%m%y`
+# directorio de notas
+DIR=~/.tasks-agenda/
+
+# se asegura que exista directorio
+( mkdir $DIR || true ) 2>/dev/null
+
+# https://github.com/LuisHDeAvila/shell-utilities/blob/master/src/00_config_commandline/00_scripts_to_commands
+function installagenda {
+source ../00_config_commandline/00_scripts_to_commands
+aplicarconfiguracion 2>/dev/null
+cp $0 $DIRSCRIPTS
+}
+
+# Main: abrir agenda
+echo "# $DATE    $HUMANDATE" >> ~/.tasks-agenda/$DATE.txt
+nano ~/.tasks-agenda/$DATE.txt

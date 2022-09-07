@@ -1,0 +1,198 @@
+#!/bin/bash
+
+# License: GPLv3
+
+
+
+
+################################################################################
+################################################################################
+# HELP SECTION
+
+# USAGE NOTES
+# - section for VM specific notes
+# - e.g. VM password: some-password
+# - e.g. IP on NIC 1: 1.2.3.4/24
+
+# BASIC USAGE
+#
+# Tested Qemu version: 6.1.1
+#
+# 1. Install needed software: qemu, tmux, socat (optional)
+# 2. Create a new folder. (should be one folder per VM)
+#    Use one folder per VM. Put all needed file for that VM into that folder!
+#    ATTENTION: The full path to that folder and the folders name should
+#      only include these letters (no spaces!): A-Z a-z 0-9 _ -
+# 3. Copy this script into a text file named "run.bash" inside the VM folder.
+# 4. Make run.bash executeable: chmod +x run.bash
+# 5. Adjust the options below.
+#    Important options (most important first):
+#    - ram_mb: Memory size
+#    - cpus: Number of CPU cores
+#    - basetime: Adjust if you're running a Windows guest.
+#    - sshport and spiceport: Must be an unused TCP port!
+#        (change if you run more than 1 VM simultanously)
+# 6. Create HDD image inside that folder (name must be "hd0.qcow2"):
+#      qemu-img create -f qcow2 hd0.qcow2 10G
+# 7. Create link to or copy installation ISO (if needed).
+#    Name must be: installation.iso
+#    Same for "virtio-win.iso" if you're running a Windows guest. (see below)
+# 8. Start run.bash. Either via filemanager or from shell: ./run.bash
+# 9. If the VM doesn't start, comment out "tmux_cmd=..." and run ./bash.run
+#    in a terminal to see the error output.
+
+# CONTROL A RUNNING QEMU VM
+#
+# Send command via socket and get STDOUT:
+#   echo 'help' | socat STDIO UNIX-CONNECT:"${mydir}"/monitor.sock; echo
+#   echo 'info usb' | socat STDIO UNIX-CONNECT:"${mydir}"/monitor.sock; echo
+# Send command via Tmux (no direct STDOUT feedback):
+#   tmux send-keys -t "${vmname}" 'eject ide1-cd0' enter
+
+
+
+
+################################################################################
+################################################################################
+# OPTIONS
+
+# Get the directory this script is in.
+mydir="$(dirname "$(readlink -f "${0}")")"
+
+# Set vm name by directory name.
+vmname="$(basename "${mydir}")"
+# Set vm name manually.
+#vmname='DebianVM'
+
+# https://www.spice-space.org/multiple-clients.html
+#   This feature is still experimental, it is not expected to work
+#   correctly under different client bandwidths, although it should not
+#   crash the server.
+export SPICE_DEBUG_ALLOW_MC=1
+
+# system qemu
+qemu='qemu-system-x86_64'
+# self compiled qemu
+#qemu=~/'opt/qemu/bin/qemu-system-x86_64'
+
+unset tmux_cmd
+# disable tmux to see errors
+tmux_cmd="tmux new -d -s ${vmname} "
+
+# - guest os specific settings -
+# Linux / UNIX BIOS clock mode
+basetime=utc
+# Windows time and driver CD (Linux has all drivers)
+# Driver CD download and more information:
+#   https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
+#   https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
+#basetime=localtime
+
+# host ssh port forwarding
+# connect via:
+#   ssh -p 50022 root@127.0.0.1
+sshport=50022
+
+# Spice (much better than VNC)
+# connect via:
+#   spicy -h 127.0.0.1 -p 55900
+spiceport=55900
+# password
+spicepw='secure'
+
+# memory (RAM) in MB (G postfix for GB - e.g.: ram_mb=2G)
+ram_mb=2048
+# actual memory in MB if guests has memory balloon driver (no postfix, only MB allowed!)
+#balloon_mb=1536
+# Disable balloon if guest has out of memory error (guest gets full ram_mb).
+deflate_on_oom=false
+
+# CPU cores
+cpus=2
+
+# -vga (high resolution)
+#   Linux: virtio, std, vmware, cirrus
+#   Windows: qxl, std
+
+# Add the following lines to get a direct network interface.
+# You can also bridge tap0 via "brctl".
+# You must create the virtual interface in advance on the host.
+#   sudo ip tuntap add dev tap0 mode tap user "${USER}"
+#
+#-device virtio-net-pci,mac=52:54:00:00:00:02,netdev=tap.2 \
+#-netdev tap,script=no,downscript=no,ifname=tap0,id=tap.2 \
+
+
+
+
+################################################################################
+################################################################################
+#  PRE-START
+
+# SMB/CIFS network share: \\10.0.2.4\qemu
+if [ ! -e "${mydir}"/shared-folder ]; then
+	mkdir "${mydir}"/shared-folder
+fi
+
+inst_iso="${mydir}/installation.iso"
+inst_iso_cmd=''
+if [ -f "${inst_iso}" ]; then
+	inst_iso_cmd=",format=raw,file=${inst_iso}"
+fi
+
+virtio_iso="${mydir}/virtio-win.iso"
+virtio_iso_cmd=()
+if [ -f "${virtio_iso}" ]; then
+	virtio_iso_cmd[0]='-drive'
+	virtio_iso_cmd[1]="if=ide,media=cdrom,index=3,id=ide3,format=raw,file=${virtio_iso}"
+fi
+
+if [ -n "${balloon_mb}" ]; then
+	bash -c "sleep 4; echo 'balloon ${balloon_mb}' | socat STDIO UNIX-CONNECT:'${mydir}'/monitor.sock >/dev/null" & disown
+fi
+
+
+
+
+################################################################################
+################################################################################
+# START QEMU
+
+${tmux_cmd}nice ionice -c3 "${qemu}" \
+\
+-boot order=c,menu=on \
+-drive file="${mydir}"/hd0.qcow2,discard=unmap,detect-zeroes=unmap,media=disk,if=virtio,index=0,format=qcow2,id=virtio0 \
+-drive if=ide,media=cdrom,index=2,id=ide2"${inst_iso_cmd}" \
+"${virtio_iso_cmd[@]}" \
+\
+-device virtio-net-pci,mac=52:54:00:00:00:01,netdev=user.1,id=virtio-net-pci.0 \
+-netdev user,hostfwd=tcp:127.0.0.1:"${sshport}"-:22,id=user.1,hostname="${vmname}",smb="${mydir}"/shared-folder/ \
+\
+-object secret,id=vncsec0,data="${spicepw}" \
+-spice port="${spiceport}",addr=127.0.0.1,ipv4=on,ipv6=off,disable-ticketing=on,password-secret=vncsec0 \
+-device ich9-usb-ehci1,id=usb \
+-device ich9-usb-uhci1,masterbus=usb.0,firstport=0,multifunction=on \
+-chardev spicevmc,name=usbredir,id=usbredirchardev1 \
+-device usb-redir,chardev=usbredirchardev1,id=usbredirdev1 \
+\
+-cpu host \
+-smp "${cpus}" \
+-m "${ram_mb}" \
+-device virtio-balloon,id=virtio-balloon.0,deflate-on-oom="${deflate_on_oom}" \
+-machine pc,mem-merge=on,accel=kvm,smm=off \
+\
+-vga std \
+-k de \
+-device nec-usb-xhci,id=xhci \
+-usb \
+-device usb-tablet,id=usb-tablet.0 \
+-rtc base="${basetime}" \
+\
+-nodefaults \
+-monitor vc \
+-monitor stdio \
+-monitor unix:"${mydir}"/monitor.sock,server,nowait \
+-serial vc \
+\
+-display gtk,gl=on,zoom-to-fit=off,window-close=off \
+-name "${vmname}" \

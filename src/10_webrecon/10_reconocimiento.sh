@@ -43,5 +43,9 @@ function reconocimiento()
     done
 
 }
+function extractlinks()
+{
+lynx -dump http://www.domain.com | awk '/http/{print $2}'
+}
 
 reconocimiento "$1"

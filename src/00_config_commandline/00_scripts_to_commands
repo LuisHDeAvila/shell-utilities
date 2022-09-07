@@ -1,24 +1,35 @@
 #!/bin/bash
-# directorio de scripts
+# eleAche
+# configura entorno para trabajar con shell scripting, crea un directorio para almacenar scripts, y lo agrega al path.
+
 DIRSCRIPTS=~/.myscripts
-function configuracion()
-{
-mkdir $DIRSCRIPTS 
-if [ `echo $PATH | grep -c $DIRSCRIPTS` -le 0 ]; then
-	echo 'export PATH=$PATH:'$DIRSCRIPTS >> ~/.bashrc
-	echo -e "\e[1;39;40m se agrego ${DIRSCRIPTS} al PATH, desde ~/.bashrc \e[m"
+openstyle='\e[7;39;49m'
+closestyle='\e[m'
+
+function aplicarconfiguracion {
+mkdir $DIRSCRIPTS
+if [ $(echo $PATH | grep -c $DIRSCRIPTS) -le 0 ]
+then
+echo 'export PATH=$PATH:'$DIRSCRIPTS >> ~/.bashrc
+echo -e "${openstyle} se agrego ${DIRSCRIPTS} al PATH, desde ~/.bashrc ${closestyle}"
 fi
+}
+
+(aplicarconfiguracion) 2>/dev/null
+
 cat << INDICACION
 
-
-para tener acceso a tus scripts desde el CLI, sigue las siguientes instrucciones:
+Para tener acceso a tus scripts desde el CLI, sigue las siguientes instrucciones:
 1. copia o mueve tus scripts al directorio $DIRSCRIPTS
-2. ejecuta el comando: chmod +x $DIRSCRIPTS/*
-3. ejecuta el comando: bash
+	echo '#!/usr/bin/env bash' > script.sh
+	echo 'echo hola esto es un script' >> script.sh
+	cp script.sh $DIRSCRIPTS
+2. asigna permisos de ejecucion al script.
+	chmod +x $DIRSCRIPTS/script.sh
+3. prueba que ejecutar tu script desde la linea de comandos
+	script.sh
+	hola esto es un script
 
 Ahora puedes ejecutar tus scripts en la linea de comandos.
 
 INDICACION
-}
-
-(configuracion) 2>/dev/null

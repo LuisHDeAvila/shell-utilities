@@ -4,4 +4,4 @@ echo {1..254} | tr ' ' '\n'  | while read host; do
 	if ping -c 1 192.168.1.$host; then
   	echo "Host $host activo"
 	fi &
-done | grep 'activo' 
+done | grep 'activo' 2>/dev/null

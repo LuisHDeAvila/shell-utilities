@@ -2,8 +2,8 @@
 # enumera cantidad de ficheros por extension.
 
 tipos_de_ficheros=($@)
-INDEX_USERDIR=~/.temp_dir/index
-TMP=~/.temp_dir/tmp
+INDEX_USERDIR=$(mktemp -d)
+TMP=$(mktemp -t)
 
 red_="\e[1;31m\033[1m"; green_="\e[0;32m\033[1m"; 
 blue_="\e[0;34m\033[1m"; yellow_="\e[0;33m\033[1m";

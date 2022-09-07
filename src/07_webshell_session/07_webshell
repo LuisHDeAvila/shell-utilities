@@ -28,7 +28,7 @@ cat << 'VULN'
 VULN
 }
 
-# carga 
+# python3 script from 'author: s4vitar'
 function pythonscript()
 {
 cat << 'SCRIPT'

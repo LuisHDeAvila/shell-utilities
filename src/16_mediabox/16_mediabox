@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+# Metodos con image magick para trabajar con multimedia
+# NO ESTA TERMINADO
+Scripts
+
+TIFF to PNG:
+mogrify -background black -format png -depth 8  Data/Training/Images/cancer_subs
+et00/*.tiff
+
+SVG to PNG:
+
+mogrify -background black -format png -depth 8 Data/Training/Labels/cancer_subse
+t00/*.svg
+
+Resize:
+
+mogrify -resize 50% Data/Training/Images/cancer_subset00/*.png
+
+   mogrify -resize 100% --transparent -strip -quality 90
+   Data/Training/Images/cancer_subset00/*.png
+
+jpeg reduce filesize
+
+   convert -resize 100% -strip -quality 90 input.jpg out.jpg
+
+png transpacent
+
+   convert -resize 100% -transparent -strip -quality 90 input.png out.png
+
+   @see:
+   [128]http://www.imagemagick.org/script/command-line-options.php#quality
+
+GrayScale
+
+for file in Data/Training/Images/cancer_subset00/*.png; do convert $file  -color
+space Gray $file;done
+
+SVG fill replace:
+
+find ./ -type f -name '*.svg' | xargs -I{} sed -i_old -n -e 's/polygon fill="non
+e"/polygon fill="white"/g;p;' {}
+
+Gray to RGB
+
+mogrify -type TrueColorMatte -define png:color-type=6  /Volumes/UUI/labels/norma
+l/*.png
+
+
+Rotate 90
+
+mogrify -rotate 90 /Volumes/UUI/images/rotate90/*.png
+
+Rename with prefix
+
+for filename in *.png; do mv "$filename" "prefix_$filename"; done;
+
+Get image size, channel, alpha, depth, DPI
+
+identify -format '%w X %h %[channels] %[bit-depth] %x x %y\n' input.jpeg
+
+Flip
+
+Flop
+
+Resize
+
+   batch:
+mogrify -resize 750x750\! *.jpg
+
+File Resize
+
+mogrify -define jpeg:extent=5100kb *.png
+
+Background Transparent
+
+convert input-with-solid-white-background-color.jpg -transparent white output-tr
+ansparent.jpg
+
+append photos horizontally
+
+convert *.jpg -append full_horizontally.jpg
+
+append photos vertically
+
+convert *.jpg +append full_vertically.jpg

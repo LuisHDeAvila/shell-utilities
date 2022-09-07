@@ -1,0 +1,24 @@
+#!/bin/bash
+# extrae ips de salida de "ss" o un archivo pcap (comunmente de wireshark, tshark, o tcpdump)
+
+FILE=$1
+
+parser(){
+[[ `file "$FILE" | grep -c 'capture file'` -eq 1 ]] && tshark -r "$FILE" -zio,phs || ss 2>/dev/null
+}
+
+function extractips()
+{
+	# regex ipv4
+	parser | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+	# regex ipv6
+	parser | grep -Eo '[0-9a-fA-F]{,4}:([0-9a-fA-F]{,4})*:([0-9a-fA-F]{,4})*:([0-9a-fA-F]{,4})*:([0-9a-fA-F]{,4})*:([0-9a-fA-F]{,4})*:([0-9a-fA-F]{,4})*:([0-9a-fA-F]{,4})*'
+}
+
+
+cat << BANNER
+	Por lo pronto solo muestra las ips con las que el sistema esta comunicandose.
+	
+BANNER
+
+extractips | sort -u

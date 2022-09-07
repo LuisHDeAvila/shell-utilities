@@ -1,0 +1,29 @@
+${variable:-value}	If the variable is unset or undefined then expand the value.
+${variable:=value}	If the variable is unset or undefined then set the value to the variable.
+${variable:+value}	If the variable is set or defined then expand the value.
+${variable:start:length}	Substring will retrieve from the start position to length position of the variable.
+${variable:start}	Substring will retrieve from start position to the remaining part of the variable.
+${#variable}	Count the length of the variable.
+${variable/pattern/string}	Replace the part of the variable with string where the pattern match for the first time.
+${variable//pattern/string}	Replace all occurrences in the variable with string where all pattern matches.
+${variable/#pattern/string}	If the pattern exists at the beginning of the variable, then replace the occurrence with string.
+${variable/%pattern/string}	If the pattern exists at the end of the variable, then replace the occurrence with string.
+${variable#pattern}	Remove the shortest match from the beginning of the variable where the pattern matches.
+${variable##pattern}	Remove the longest match from the beginning of the variable where the pattern matches.
+${variable%pattern}	Remove the shortest match from the end of the variable where the pattern matches.
+${variable%%pattern}	Remove the longest match from the end of the variable where the pattern matches.
+
+${variable:-valor}	Si la variable no está configurada o definida, expanda el valor .
+${variable:=valor}	Si la variable no está configurada o definida, establezca el valor en la variable.
+${variable:+valor}	Si la variable está configurada o definida, expanda el valor .
+${variable:inicio:longitud}	La subcadena se recuperará desde la posición de inicio hasta la posición de longitud de la variable.
+${variable:inicio}	La subcadena se recuperará desde la posición inicial hasta la parte restante de la variable.
+${#variable}	Cuente la longitud de la variable.
+${variable/patrón/cadena}	Reemplace la parte de la variable con una cadena donde el patrón coincida por primera vez.
+${variable//patrón/cadena}	Reemplace todas las apariciones en la variable con una cadena donde coincidan todos los patrones.
+${variable/#patrón/cadena}	Si el patrón existe al comienzo de la variable, reemplace la ocurrencia con una cadena.
+${variable/%patrón/cadena}	Si el patrón existe al final de la variable, reemplace la aparición con una cadena.
+${variable#patrón}	Elimine la coincidencia más corta del principio de la variable donde coincide el patrón.
+${variable##patrón}	Elimine la coincidencia más larga del principio de la variable donde coincide el patrón.
+${variable%patrón}	Elimine la coincidencia más corta del final de la variable donde coincide el patrón.
+${variable%%patrón}	Elimine la coincidencia más larga del final de la variable donde coincide el patrón.
