@@ -1,24 +1,17 @@
 #!/bin/bash
+# esto es un fork 
 
 # License: GPLv3
-
-
-
-
 ################################################################################
 ################################################################################
 # HELP SECTION
-
 # USAGE NOTES
 # - section for VM specific notes
 # - e.g. VM password: some-password
 # - e.g. IP on NIC 1: 1.2.3.4/24
-
 # BASIC USAGE
-#
-# Tested Qemu version: 6.1.1
-#
-# 1. Install needed software: qemu, tmux, socat (optional)
+## Tested Qemu version: 6.1.1
+## 1. Install needed software: qemu, tmux, socat (optional)
 # 2. Create a new folder. (should be one folder per VM)
 #    Use one folder per VM. Put all needed file for that VM into that folder!
 #    ATTENTION: The full path to that folder and the folders name should
@@ -40,45 +33,33 @@
 # 8. Start run.bash. Either via filemanager or from shell: ./run.bash
 # 9. If the VM doesn't start, comment out "tmux_cmd=..." and run ./bash.run
 #    in a terminal to see the error output.
-
 # CONTROL A RUNNING QEMU VM
-#
 # Send command via socket and get STDOUT:
 #   echo 'help' | socat STDIO UNIX-CONNECT:"${mydir}"/monitor.sock; echo
 #   echo 'info usb' | socat STDIO UNIX-CONNECT:"${mydir}"/monitor.sock; echo
 # Send command via Tmux (no direct STDOUT feedback):
 #   tmux send-keys -t "${vmname}" 'eject ide1-cd0' enter
-
-
-
-
 ################################################################################
 ################################################################################
 # OPTIONS
-
 # Get the directory this script is in.
 mydir="$(dirname "$(readlink -f "${0}")")"
-
 # Set vm name by directory name.
 vmname="$(basename "${mydir}")"
 # Set vm name manually.
 #vmname='DebianVM'
-
 # https://www.spice-space.org/multiple-clients.html
 #   This feature is still experimental, it is not expected to work
 #   correctly under different client bandwidths, although it should not
 #   crash the server.
 export SPICE_DEBUG_ALLOW_MC=1
-
 # system qemu
 qemu='qemu-system-x86_64'
 # self compiled qemu
 #qemu=~/'opt/qemu/bin/qemu-system-x86_64'
-
 unset tmux_cmd
 # disable tmux to see errors
 tmux_cmd="tmux new -d -s ${vmname} "
-
 # - guest os specific settings -
 # Linux / UNIX BIOS clock mode
 basetime=utc
@@ -121,11 +102,6 @@ cpus=2
 #
 #-device virtio-net-pci,mac=52:54:00:00:00:02,netdev=tap.2 \
 #-netdev tap,script=no,downscript=no,ifname=tap0,id=tap.2 \
-
-
-
-
-################################################################################
 ################################################################################
 #  PRE-START
 
@@ -148,51 +124,49 @@ if [ -f "${virtio_iso}" ]; then
 fi
 
 if [ -n "${balloon_mb}" ]; then
-	bash -c "sleep 4; echo 'balloon ${balloon_mb}' | socat STDIO UNIX-CONNECT:'${mydir}'/monitor.sock >/dev/null" & disown
+	bash -c "sleep 4; echo 'balloon ${balloon_mb}' | socat STDIO UNIX-CONNECT:'${mydir}'/monitor.sock >/dev/null" &
+	disown
 fi
-
-
-
 
 ################################################################################
 ################################################################################
 # START QEMU
 
 ${tmux_cmd}nice ionice -c3 "${qemu}" \
-\
--boot order=c,menu=on \
--drive file="${mydir}"/hd0.qcow2,discard=unmap,detect-zeroes=unmap,media=disk,if=virtio,index=0,format=qcow2,id=virtio0 \
--drive if=ide,media=cdrom,index=2,id=ide2"${inst_iso_cmd}" \
-"${virtio_iso_cmd[@]}" \
-\
--device virtio-net-pci,mac=52:54:00:00:00:01,netdev=user.1,id=virtio-net-pci.0 \
--netdev user,hostfwd=tcp:127.0.0.1:"${sshport}"-:22,id=user.1,hostname="${vmname}",smb="${mydir}"/shared-folder/ \
-\
--object secret,id=vncsec0,data="${spicepw}" \
--spice port="${spiceport}",addr=127.0.0.1,ipv4=on,ipv6=off,disable-ticketing=on,password-secret=vncsec0 \
--device ich9-usb-ehci1,id=usb \
--device ich9-usb-uhci1,masterbus=usb.0,firstport=0,multifunction=on \
--chardev spicevmc,name=usbredir,id=usbredirchardev1 \
--device usb-redir,chardev=usbredirchardev1,id=usbredirdev1 \
-\
--cpu host \
--smp "${cpus}" \
--m "${ram_mb}" \
--device virtio-balloon,id=virtio-balloon.0,deflate-on-oom="${deflate_on_oom}" \
--machine pc,mem-merge=on,accel=kvm,smm=off \
-\
--vga std \
--k de \
--device nec-usb-xhci,id=xhci \
--usb \
--device usb-tablet,id=usb-tablet.0 \
--rtc base="${basetime}" \
-\
--nodefaults \
--monitor vc \
--monitor stdio \
--monitor unix:"${mydir}"/monitor.sock,server,nowait \
--serial vc \
-\
--display gtk,gl=on,zoom-to-fit=off,window-close=off \
--name "${vmname}" \
+	\
+	-boot order=c,menu=on \
+	-drive file="${mydir}"/hd0.qcow2,discard=unmap,detect-zeroes=unmap,media=disk,if=virtio,index=0,format=qcow2,id=virtio0 \
+	-drive if=ide,media=cdrom,index=2,id=ide2"${inst_iso_cmd}" \
+	"${virtio_iso_cmd[@]}" \
+	\
+	-device virtio-net-pci,mac=52:54:00:00:00:01,netdev=user.1,id=virtio-net-pci.0 \
+	-netdev user,hostfwd=tcp:127.0.0.1:"${sshport}"-:22,id=user.1,hostname="${vmname}",smb="${mydir}"/shared-folder/ \
+	\
+	-object secret,id=vncsec0,data="${spicepw}" \
+	-spice port="${spiceport}",addr=127.0.0.1,ipv4=on,ipv6=off,disable-ticketing=on,password-secret=vncsec0 \
+	-device ich9-usb-ehci1,id=usb \
+	-device ich9-usb-uhci1,masterbus=usb.0,firstport=0,multifunction=on \
+	-chardev spicevmc,name=usbredir,id=usbredirchardev1 \
+	-device usb-redir,chardev=usbredirchardev1,id=usbredirdev1 \
+	\
+	-cpu host \
+	-smp "${cpus}" \
+	-m "${ram_mb}" \
+	-device virtio-balloon,id=virtio-balloon.0,deflate-on-oom="${deflate_on_oom}" \
+	-machine pc,mem-merge=on,accel=kvm,smm=off \
+	\
+	-vga std \
+	-k de \
+	-device nec-usb-xhci,id=xhci \
+	-usb \
+	-device usb-tablet,id=usb-tablet.0 \
+	-rtc base="${basetime}" \
+	\
+	-nodefaults \
+	-monitor vc \
+	-monitor stdio \
+	-monitor unix:"${mydir}"/monitor.sock,server,nowait \
+	-serial vc \
+	\
+	-display gtk,gl=on,zoom-to-fit=off,window-close=off \
+	-name "${vmname}"

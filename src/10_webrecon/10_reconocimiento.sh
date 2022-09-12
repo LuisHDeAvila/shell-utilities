@@ -3,13 +3,10 @@
 # ** no esta terminado **
 URL="$1"
 function target {
-    whatweb "$1" | 
+    whatweb "$1"
 }
-# if [ `ping "$URL"` -eq "0" ]; then
 
-# fi
-function checkbrokenlinks()
-{
+function checkbrokenlinks(){
 wget --spider -nd -e robots=off -prb -o wget-log -nv "$1"
 }
 

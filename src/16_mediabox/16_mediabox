@@ -1,85 +1,48 @@
 #!/usr/bin/env bash
-# Metodos con image magick para trabajar con multimedia
-# NO ESTA TERMINADO
-Scripts
+: '
+  Metodos image magick.
+  los metodos, trabajan en ficheros de multimedia, reciben una sola entrada o ninguna.
 
-TIFF to PNG:
-mogrify -background black -format png -depth 8  Data/Training/Images/cancer_subs
-et00/*.tiff
+	      	     +-----------------------------------------------------------------+
+	Metodo:      | function(){ comando(s) "$argumento_unico" ;} # tipo de entrada  |
+	             +-----------------------------------------------------------------+
+'
 
-SVG to PNG:
+# TIFF to PNG
+tifftopng() { mogrify -background black -format png -depth 8 "$1"; } # file.tiff
+# SVG to PNG
+svgtopng() { mogrify -background black -format png -depth 8 "$1"; } # file.svg
+# Resize
+editscale() { mogrify -resize 50% "$1"; } # file.png
+# Resize
+resizetransparent() { mogrify -resize 100% --transparent -strip -quality 90 "$1"; } # file.png
+# JPEG reduce filesize
+jpegreduce() { convert -resize 100% -strip -quality 90 "$1" $(echo "$1" | grep -Eo '\/[a-zA-Z0-9]+\.' | sed 's/\.//g').jpg; } # file.png
+# png transpacent
+pngtransparent() { convert -resize 100% -transparent -strip -quality 90 "$1" out.png; } # file.png
+# GrayScale
+grayscale() { for file in "$1"; do convert $file -colorspace Gray $file; done; } # file.png
+# SVG fill replace
+svgfillreplace() { find ./ -type f -name '*.svg' | xargs -I{} sed -i_old -n -e 's/polygon fill="none"/polygon fill="white"/g;p;' {}; } # NA
+# Gray to RGB
+graytorgb() { mogrify -type TrueColorMatte -define png:color-type=6 "$1"; } # file.png
+# Rotate 90
+rotatesquare() { mogrify -rotate 90 "$1"; } # file.png
+# Rename with prefix
+renamewithprefix() { for filename in "$1"; do mv "$filename" "prefix_$filename"; done; } # file.png
+# Get image size, channel, alpha, depth, DPI
+identifier() { identify -format '%w X %h %[channels] %[bit-depth] %x x %y\n' "$1"; } # input.jpeg
+# Resize
+singleresize() { mogrify -resize 1080x1080\! "$1"; } # file.jpg
+# File Resize
+fileresize() { mogrify -define jpeg:extent=5100kb "$1"; } # file.png
+# Background Transparent
+bgtransparent() { convert "$1" -transparent white output-transparent.jpg; } # file.png
+# append photos horizontally
+horizontalappend() { convert "$1" -append full_horizontally.jpg; } # file.jpg
+# append photos vertically
+verticalappend() { convert "$1" +append full_vertically.jpg; } # file.jpg
 
-mogrify -background black -format png -depth 8 Data/Training/Labels/cancer_subse
-t00/*.svg
-
-Resize:
-
-mogrify -resize 50% Data/Training/Images/cancer_subset00/*.png
-
-   mogrify -resize 100% --transparent -strip -quality 90
-   Data/Training/Images/cancer_subset00/*.png
-
-jpeg reduce filesize
-
-   convert -resize 100% -strip -quality 90 input.jpg out.jpg
-
-png transpacent
-
-   convert -resize 100% -transparent -strip -quality 90 input.png out.png
-
-   @see:
-   [128]http://www.imagemagick.org/script/command-line-options.php#quality
-
-GrayScale
-
-for file in Data/Training/Images/cancer_subset00/*.png; do convert $file  -color
-space Gray $file;done
-
-SVG fill replace:
-
-find ./ -type f -name '*.svg' | xargs -I{} sed -i_old -n -e 's/polygon fill="non
-e"/polygon fill="white"/g;p;' {}
-
-Gray to RGB
-
-mogrify -type TrueColorMatte -define png:color-type=6  /Volumes/UUI/labels/norma
-l/*.png
-
-
-Rotate 90
-
-mogrify -rotate 90 /Volumes/UUI/images/rotate90/*.png
-
-Rename with prefix
-
-for filename in *.png; do mv "$filename" "prefix_$filename"; done;
-
-Get image size, channel, alpha, depth, DPI
-
-identify -format '%w X %h %[channels] %[bit-depth] %x x %y\n' input.jpeg
-
-Flip
-
-Flop
-
-Resize
-
-   batch:
-mogrify -resize 750x750\! *.jpg
-
-File Resize
-
-mogrify -define jpeg:extent=5100kb *.png
-
-Background Transparent
-
-convert input-with-solid-white-background-color.jpg -transparent white output-tr
-ansparent.jpg
-
-append photos horizontally
-
-convert *.jpg -append full_horizontally.jpg
-
-append photos vertically
-
-convert *.jpg +append full_vertically.jpg
+# la sintaxis para usar los metodos es:
+# ./thisscript nombre_de_metodo fichero_de_entrada.png
+$1 "$2" # 1=nombre_de_metodo 2=fichero_de_entrada

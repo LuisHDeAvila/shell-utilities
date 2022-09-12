@@ -1,0 +1,6 @@
+#!/bin/bash
+function runqemu() {
+  sudo qemu-system-x86_64 -enable-kvm -cpu host -M q35 -m 2G -smp 4 --bios /usr/share/edk2/ovmf/OVMF_CODE.fd -drive id=cdrom,file=/dev/sr1, if=none,media=cdrom,format=raw,readonly=on -drive id=disk,file=/dev/md126, if=none,format=raw -device virtio-blk-pci,drive=cdrom -device virtio-blk-pci, drive=disk -device VGA,vgamem_mb=64,xres=800,yres=600
+}
+
+runqemu

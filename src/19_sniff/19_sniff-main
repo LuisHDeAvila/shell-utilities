@@ -1,0 +1,31 @@
+#!/bin/bash
+: '
+	basado en el sistema echelon, de inteligencia de senales.
+	analiza los patrones de origen-destino de todos los dispositivos al alcanze de una interface en modo monitor.
+	Deteccion de fugas de informacion, si un microfono envia datos a traves de redes 802.11, aparte de que es detectado, se obtiene la direccion ip de destino.
+	Usa tshark, tcpdump, o algun otro sniffer.
+'
+
+# main
+# function sniffer(){ ;} # inicia modo monitor y graba 5 minutos de trafico entrante o saliente alrededor de la antena.
+
+# EXTRACT DATA
+function extractdata(){
+	function regexfilters(){ source ./_regexpatterns; regexpatterns "$1"; }
+	data=$1;
+	Error(){ echo '   error: se esperaba un fichero .pcap !!';}
+	[[ $(file "$data" | grep -c 'capture file') -eq 1 ]] && tshark -r "$data" -zio,phs | while read line
+	do
+		let counter++
+		counter=$(echo -n "$counter ")
+		datarecovery=$(regexfilters "$line")
+		echo "$counter	$( echo $datarecovery | tr '\n' '\t' )"
+	done || Error;
+};
+
+# function analizedata(){ } # analiza patrones con el fin de obtener inteligencia
+# function presentdata(){ } # muestra un reporte de la inteligencia recopilada
+# function recoverydata(){ } # inserta inteligencia recopilada en base de datos remota
+
+
+extractdata "$1"
