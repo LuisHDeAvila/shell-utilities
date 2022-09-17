@@ -1,0 +1,1397 @@
+TX2/TX2L/TX2LR
+Wireless Terminal
+User Guide
+© 2018 Burnside Telecom Ltd.
+Page 1 of 31
+Rev 2.3
+Contents
+1
+Introduction
+4
+Getting started
+4
+LEDs
+5
+Making and receiving calls
+5
+Emergency calls via the mobile network
+5
+Security features
+6
+Special mobile call features
+7
+Call forwarding of incoming mobile calls
+8
+Configuration of the terminal
+9
+List of commands
+10
+Detailed information on commands for all versions
+22
+Commands controlling output option
+23
+Installing USB driver and connecting to a PC
+24
+Operating tips
+25
+Troubleshooting
+26
+Important safety information
+28
+Specifications
+30
+Information on disposal/recycling of product
+31
+Revision history
+© 2018 Burnside Telecom Ltd.
+Page 2 of 31
+Rev 2.3
+Introduction
+The Burnside TX series fixed cellular terminals provide professional telephony features within a
+compact and easy-to-use package.
+All models can be used with a standard desk phone (or cordless phone) in locations where wired
+sockets are not available. The TX2L is fitted with both a PSTN (Public Switched Telephone Network)
+landline socket as well as a mobile connection.
+Both versions are feature rich and can be configured for a variety of applications.
+The TX2 can:
+ Be configured to report an exceptional event such as power failure.
+ Operate from an internal battery in the event of power failure.
+ Support many user programmable features.
+ Operate as SMS gateway when connected to a PC.
+ Provide outgoing call progress announcements.
+The TX2L can also:
+ Automatically provide backup for landlines in the event of a land line failure.
+ Automatically route outgoing calls destined for mobile numbers via the mobile network.
+ Forward incoming PSTN calls to a pre-programmed number.
+ Provide user recordable announcement to incoming callers on PSTN.
+ Allow caller selection of destination department (Auto-Attendant).
+The TX2LR can also:
+ Pass a landline connection directly through to the telephone when the terminal is off.
+© 2018 Burnside Telecom Ltd.
+Page 3 of 31
+Rev 2.3
+Getting started
+Remove the clip-on lid to expose the SIM holder and insert a standard size SIM card.
+Connect the battery and replace the lid. Connect the antenna, telephone and landline where
+appropriate. See the supplied quick start guide for illustrations.
+Connect the supplied charger. When charge power is connected for the first time after connecting
+the battery, the battery circuit will be conditioned which will take a few seconds. The charge LED will
+flash to indicate when the terminal has entered normal charge mode. See the section on LEDs.
+The terminal will now be in “charge only mode” and will not be connected to the mobile network. If
+the terminal is a TX2LR model, the landline will be connected through to the phone connection.
+Turn on the terminal by pressing and holding the red button on the rear of the terminal, when the left
+two LEDS light, release the button and the terminal will operate. It will take a few seconds to register
+with the mobile network. Now the terminal is ready to make or receive calls.
+To test the connection of the connected phone, try a ringback test by dialling *9# and hang up. The
+phone should ring.
+To test the landline on the TX2L/TX2LR, with the handset off-hook, press the recall button on the
+phone and the landline will be connected.
+LEDs
+There are three LEDs on the terminal. The right hand green LED indicates the state of charging
+which applies whether the terminal is in “charge only” mode or when it is operating.
+The middle green LED indicates the mode of operation. The left orange LED indicates if the terminal
+requires attention.
+The table below shows the state and timings of the 3 LEDs. The solid graphic block character ■
+represents the LED on, the □ represents the LED off. The ratios illustrated are approximate.
+Left
+[←
+2 seconds
+→]
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+■■■■■■■■■■■■■■■■■■■■
+■□□□□□□□□□■□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+■■■■■□□□□□■■■■■□□□□□
+■■■■■□□□□□■■■■■□□□□□
+■□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+■■■■■■■■■■■■■■■■■■■■
+Middle
+[←
+2 seconds
+→]
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+□□□□□□□□□□□□□□□□□□□□
+■■■■■■■■■■■■■■■■■■■■
+□□□□□□□□□□□□□□□□□□□□
+■□□□□■□□□□■□□□□■□□□□
+□□□□□□□□□□□□□□□□□□□□
+■■■■■□□□□□■■■■■□□□□□
+■□□□□□□□□□□□□□□□□□□□
+■□□□□□□□□□□□□□□□□□□□
+■■■■■□□□□□■■■■■□□□□□
+■■■■■■■■■■■■■■■■■■■□
+■■■■■■■■■■■■■■■■■■■■
+□□□□□□□□□□□□□□□□□□□□
+Right
+[←2 s→]
+□□□□□□
+■□□□□□
+■■■■■□
+■■■■■■
+■■■□□□
+xxxxxxx
+■□□□□□
+xxxxxxx
+xxxxxxx
+xxxxxxx
+xxxxxxx
+xxxxxxx
+xxxxxxx
+xxxxxxx
+xxxxxxx
+xxxxxxx
+← Position & colour
+Function/Mode
+Inactive
+Conditioning power circuit
+Charge only mode charging
+Charge only mode charged
+Battery fault
+On/Off Button pressed
+Battery too low, please wait
+Starting/searching
+Waiting for PIN
+Waiting for PUK
+Weak signal (calls possible)
+Ready for call
+Incoming call
+Mobile call in progress
+PSTN Call or forward in progress
+Fault such as no SIM
+The xxxxxxx states of the charging LED during normal terminal operation can be any of the normal
+charging states.
+© 2018 Burnside Telecom Ltd.
+Page 4 of 31
+Rev 2.3
+Making and receiving calls
+To make a call, lift the handset of the connected telephone and dial the desired number. The call will
+be made automatically. With the TX2LR model in the default setting, the call will be routed to either
+the landline or the mobile network depending on the number dialled. When dialling a number, the
+terminal will wait for 3 seconds after the last digit dialled before trying to connect the number. This
+delay can be changed using CFG3. However pressing the # key at the end of the number will cause
+the terminal to connect immediately.
+To override the automatic line selection on an individual call, dial the prefix *9 before the number you
+wish to dial and the call will be routed via the mobile network. To manually select the PSTN, press
+the recall or flash-hook.
+To make a call on the mobile network optimised for Text Telephone (TTY), dial the prefix *9*1.
+This will invoke the Cellular Text Telephone Modem built into the terminal. See CFG40 for more
+information.
+Emergency calls via the mobile network
+Even if there is no signal on the network assigned to the installed SIM, it may still be possible to
+make emergency calls provided there is sufficient signal coverage of another network. Simply dial
+the 112 international emergency number or the country specific emergency number specified by your
+SIM (e.g. 999 in the UK).
+Security features
+These commands relate to the security access features of the SIM card and network services.
+Commands may be entered by dialling on the connected phone or entering “ATD” followed by the
+command using the USB.
+• Unlock PIN1 *8*[PIN1]#
+• Disable PIN1 lock1 *870*[PIN1]#
+• Enable PIN1 lock *871*[PIN1]#
+• Change PIN1 **04[old PIN]*[new PIN]*[new PIN]#
+• Change PIN2 **042*[old PIN2]*[new PIN2]*[new PIN2]#
+• Unblock PIN1 **05*[PUK]*[new PIN1]*[new PIN1]#
+• Unblock PIN2 **052*[PUK]*[newPIN2]*[newPIN2]#
+Notes:
+1 Some SIM cards will not allow you to disable PIN1 protection.
+2 The PUK (Personal UnblocKing code) is provided by the service provider.
+© 2018 Burnside Telecom Ltd.
+Page 5 of 31
+Rev 2.3
+Special mobile call features.
+The terminal supports special network call features such as multiparty calling.
+Special call features require the use of the button on the attached phone which is
+commonly labelled RECALL or R.
+Call waiting
+Providing call waiting is enabled and supported by your network, an incoming call whilst the
+phone is in use will sound a tone in the handset. You have the following options:
+Call waiting options
+• To ignore the call, wait until the caller either hangs up or is diverted.
+• To reject the waiting call and continue with the active call, press R0.
+• To end the active call and accept the waiting call, press R1.
+• To put the active call on hold and accept the waiting call, press R2.
+• To swap between the held call and the active call, press R2 again.
+In-call dialling
+To make another call while one call is already active.
+• Press the R key and dial the number. The active call will be put on hold.
+• To swap between the held call and the active call press R2.
+Conference calls
+To have a conversation with two or more parties.
+• Dial the first person in the normal way.
+• Press R and then dial the next person.
+• Press R3 to create a conference call.
+• To add another person, press R and dial the next number. When the person answers, press
+R3 to join them to the conference.
+If the call is answered by voice mail or the wrong person, press R1 to reject and return to the
+conference.
+To end the conference call, hang up the telephone.
+• To remove one person from the conference, press R1x (where x is the number of the person
+in the order the call was set up).
+• To have a private conversation with one member of the conference, press R2x (where x is
+the number of the person in the order the call was set up). The other parties will be placed on
+hold. To return to the conference, press R3.
+• To transfer the call to the other parties and end your call, press R4.
+Notes:
+• The availability of these facilities are dependent on the SIM card and service provider.
+• If you try to add a party to a conference call and the call is answered by voice mail, you
+should disconnect that party otherwise the conference may be recorded to voice mail until it
+becomes full.
+• Replacing the handset phone will terminate all calls (held, calling, active or waiting).
+• If there is an incoming call while the phone is in use but no call is active, a ringing tone will be
+heard through the handset. When the handset is replaced, the phone will ring and the call may
+be answered in the normal way.
+© 2018 Burnside Telecom Ltd.
+Page 6 of 31
+Rev 2.3
+Call forwarding of incoming mobile calls
+Call forwarding is a mobile network service which allows incoming calls to be routed in the network to
+an alternative number (such as a voicemail box) when certain criteria are met.
+In concert with your service provider, the terminal allows you to control various aspects of the call
+forwarding service. The various forwarding criteria are not mutually exclusive and can be used in
+combination to divert different types of call to separate numbers.
+These commands may be entered by dialling on the connected phone or entering “ATD” followed by
+the command using the USB.
+Call forwarding commands are composed as follows:
+(Command prefix)[Action]*<Phone number>*<Service>#
+Command prefixes:
+Activate
+Register and activate
+Deactivate
+Unregister and deactivate
+Check status (interrogate)¹
+*
+**
+#
+##
+*#
+¹ Interrogation is only possible via USB connection.
+[ACTION] criteria:
+Forward unconditionally
+Forward when busy
+Forward when no reply
+Forward when signal lost
+Forward all calls
+Forward all conditional types
+21
+67
+61
+62
+002
+004
+The service type allows you to optionally specify one or more particular types of incoming call to
+forward.
+Service type code
+Voice only
+Fax only
+SMS only
+SMS+FAX
+Voice+FAX
+Voice+SMS+FAX
+Data circuit async.
+Data circuit sync.
+PAD
+Packet
+Data circuit async+PAD
+Data circuit sync.+packet
+Data circuit asyn.+sync.+PAD
+All services (omit code)
+11
+13
+16
+12
+19
+10
+25
+24
+27
+26
+21
+22
+20
+Call forwarding examples:
+• To register a new number and activate call forwarding when busy (to the phone number 01234
+567890): **67*01234567890*#
+• To deactivate call forwarding when busy: #67*
+• To reactivate call forwarding when busy to 01234 567890 again: *67*
+© 2018 Burnside Telecom Ltd.
+Page 7 of 31
+Rev 2.3
+Configuration of the terminal
+The terminal may be configured using dial codes, commands entered via SMS or the USB interface.
+Most commands entered via the USB are also accepted when the terminal is in Charge Only mode.
+Some commands are only available via SMS and some SMS commands have both a configuration
+code version and a more easy to remember text version.
+See the “TX2_CommandsAndConfigCodesV_1_0” document for a convenient overview of the
+options and codes.
+Commands by DTMF codes (entered on phone)
+The command is prefixed with *8 then the command number then * followed by the parameter or
+value then terminated by #
+Example 1: *83*2# - sets the configuration register 3 with the value 2.
+Example 2: *83*2#*84*1# - sets the configuration register 3 with the value 2 and register 4 with 1.
+If a command is successful, two beeps are sounded on the handset. If there is an error, one long
+beep is sounded. If there is an error, re-enter the correct code.
+Command syntax for SMS or via USB
+Command type:
+Execute: cmd Executes the command. This manual shows no parameters for those.
+Read : cmd? Returns the currently set value. This manual shows (?) or (?/=)
+Write: cmd=<...> Sets user-definable parameter/value. This manual shows (
+Descriptions of the commands are shown with no parameters (?) or (?/=)ith ? or = or both
+Commands may be concatenated by entering a semicolon delimiter for example “CFG3=2;FSUM”
+Commands are not case sensitive.
+To read multiple parameters, a suffix wild card may be used, for example: “CFG*?”.
+When writing new values with the CFGn and PNUMSn commands, multiple parameters may be
+entered by concatenation using a comma separator.
+Example 1: CFG1=3,2=1,5=1
+Example 2: PNUM0=+448700762666,11=+44712345678
+Example 3: CFG1=3,2=1,5=1;PNUM0=+448700762666
+Commands via USB interface (install USB driver before connecting):
+The command line must start with AT!
+Example 1: “AT!cfg3=2<cr>” (<cr> carriage return/enter)
+Example 2: “AT!CFG3=2;Fsum<cr>”
+Note: Echo “E” and command response ”Q” (OK/ERROR) behave differently when the terminal is in
+charge only mode or active.
+In charge only mode, echo and response is turned on with ATE1Q0 or off with ATE0Q1, the default
+is on. When the terminal is active, “E” and “Q” comply with normal ETSI standards.
+Commands sent by SMS
+The first 4 characters must be the terminal PIN (default is 1234). This is then followed by the
+command(s).
+© 2018 Burnside Telecom Ltd.
+Page 8 of 31
+Rev 2.3
+Example 1: “1234 cfg3=2”
+Example 2: “1234 cfg3=2;cfg4=1”
+If one or more space characters are used after the PIN, they will be ignored.
+All commands that do not implicitly require a response are automatically replied to with a summary of
+the terminal status. This automatic reply may be suppressed by placing a stop character after the pin
+number. For example 1234. cfg3=2 will change the configuration without replying. An error in the
+command will always result in a reply. The reply is either sent to the number that sent the command
+or if a colon is used after the PIN, the reply will be sent to the number specified by PNUM11. For
+example 1234: cfg3=2.
+If the colon is used and PNUM11 is not programmed, no reply will be sent.
+List of commands
+Commands for all models:
+CFG
+PNUM
+AUTO
+TPIN
+STAT
+STIME
+CLOCK
+CLRTEMP
+CLRCALL
+CLRFAULT
+REPORT
+INIT
+VER
+HVER
+RESTORE
+CODE
+ON
+OFF
+Read and write configuration settings.
+Read and write phone number memories.
+Sets automatic off-hook dial.
+Read and write terminal PIN.
+Returns the status of the terminal.
+Time to send daily or periodic SMS status.
+Sets the clock to the time recorded in the SMS delivery.
+Clears the maximum and minimum temperature memory.
+Ends any call in progress.
+Clears any fault condition.
+Report error event to specified destination number.
+Restarts the terminal.
+Returns the firmware version number.
+Returns the hardware version number.
+Restores the default settings.
+Command to unlock optional features.
+Turns the terminal on.
+Turns the terminal off.
+Commands for TX2L/ TX2LR:
+MPREFIX
+FORWARD
+CANCEL
+ANNOUNCE
+ATTENDANT
+XVOXRCDn
+XVOXSETn
+XREJECTn
+PPREFIX
+IPREFIX
+Sets the prefix used to determine if the number is destined for the mobile network.
+Activate call forwarding without an announcement.
+Cancel call forwarding mode
+User friendly way of turning on call forwarding with announcement.
+User friendly way of turning on call forwarding with auto-attendant announcement
+Status of user recorded extension name.
+Switch to control the announcement of the extension selected.
+Switch to control the option to reject a call to an extension after announcement.
+Sets the prefix to optionally insert when dialling via the PSTN
+Sets the IDD prefix that is used to convert “+” in phone numbers for PSTN dialling
+© 2018 Burnside Telecom Ltd.
+Page 9 of 31
+Rev 2.3
+Optional input/output commands for all models:
+OUT
+OUTDUR
+OUTRPT
+OPIN
+Controls the output.
+Period to automatically clear the output.
+Interval to repeat output.
+Read and write output PIN
+Optional call logging commands for all models:
+CLOG
+CLRLOG
+LTIME
+Returns the specified number of call log entries.
+Clears the specified number of oldest call log entries.
+Time to send regular SMS call log 24h format.
+© 2018 Burnside Telecom Ltd.
+Page 10 of 31
+Rev 2.3
+Detailed information on commands:
+Read and write configuration setting.
+CFGn
+Value of n: Code
+Configuration/Function
+0
+*80*n#
+Phone region:
+The frequency and cadence used for progress tones.
+0 = UK (default).
+.... others to follow....
+1
+*81*n#
+CLI type:
+The Caller ID may be sent to the phone from incoming mobile.
+0 = None (default)
+.... others to follow....
+2
+*82*n#
+My number sending:
+This determines whether the terminal number is declared to the destination being
+called.
+0 = Use the setting defined by the network (default).
+1 = Number is always sent if supported by the network.
+2 = Number is always withheld.
+3
+*83*n#
+Dial delay:
+This determines the delay after receiving the last DTMF digit until the call is made.
+1 to 9 seconds (default 3).
+4
+*84*n#
+Ring cadence for incoming mobile calls:
+Four different cadences useful to differentiate between phones in close proximity.
+0 to 3 (default 0).
+5
+*86*n#
+Call restrictions:
+Restrict use of the terminal.
+0 = No restriction (default).
+1 = Inhibit incoming calls.
+2 = Inhibit outgoing calls.
+3 = Inhibit incoming & outgoing calls.
+4 = Restrict dialled numbers to match Memories 0-9 or 112/999/911
+6
+*87*n#
+Call time restriction of outbound mobile call:
+Limit the duration of an outbound mobile call. When only 30 seconds remain, a beep
+or announcement is heard in the handset to warn the caller.
+0-120 minutes (default 0, no restriction).
+7
+*88*nn#
+Maximum dialled number length:
+The maximum number of digits accepted may be changed (default 20).
+1-20 = Restriction on number of digits in a dialled number
+8
+*810*n#
+Auto dial:
+This feature may be used to automatically dial when the phone is taken off-hook.
+0 = Normal dialling that requires digits to be dialled (default).
+1 = Dials number stored in memory location 10.
+© 2018 Burnside Telecom Ltd.
+Page 11 of 31
+Rev 2.3
+9
+*811*n#
+SMS command enable (via USB/DTMF only):
+If the terminal is to be used with a PC connected via USB with software that handles
+SMS, disable the SMS commands.
+0 = Disabled.
+1 = Enabled (default).
+10
+*812*n#
+Audio output level of mobile call:
+The output level may be increased in 3 steps of 2dB.
+0 = Normal level (default).
+1 = +2dB.
+2 = +4dB
+3 = +6dB
+11
+*813*n#
+TAPI voice compatibility:
+This provides voice call dialling compatibility with standard software where the TX2 is
+connected to a PC with TAPI dialler functionality.
+0 = Disable TAPI compatibility (default).
+1 = Enable TAPI compatibility.
+12
+*814*n#
+Allow flash:
+The flash hook is used to control in-call functions such as call waiting and
+multiparty calling.
+0 = Flash hook ignored.
+1 = Flash hook accepted (default).
+13
+*815*n#
+”End of call” signal method:
+0 = None.
+1 = K-Break (default).
+2 = Line reversal.
+3 = Kewlstart (Asterisk compatible “K-break” 800ms).
+14
+*816*n#
+Line reversal on outgoing call connection:
+0 = Disabled.
+1 = Enabled (default).
+15
+*817*0#
+Terminal configuration from DTMF codes:
+0 = Disabled.
+1 = Enabled (default). Can only re-enable via USB or SMS command.
+16
+*830*n#
+Call progress announcement mode:
+Instead of tones, voice announcements may be played to suit the particular condition
+of the terminal. For example “We are unable to connect your call, please try again
+later”
+0 = No announcements, only progress tones (default).
+1 = Normal dial tone, then progress announcements.
+© 2018 Burnside Telecom Ltd.
+Page 12 of 31
+Rev 2.3
+17
+*831*n#
+Call announcement recording:
+When call forwarding or call announcing, the user may record a greeting up to 35
+seconds in duration. For example “Thank you for calling Burnside Technology, please
+wait for the next available agent”
+0 = Clear user recorded announcement and return to default announcement.
+1 = Record new announcement. (Via DTMF/handset only)
+2 = Play/review announcement. (Via DTMF/handset only)
+18
+*832*n#
+Voice prompt level:
+The output level of announcements may be adjusted.
+0 = -6dB
+1 = -3dB
+2 = Normal level (default).
+3 = +3dB
+4 = +6dB
+19
+*840*n#
+Ring mode for incoming PSTN calls:
+0 = Silent
+1 = UK standard (default).
+20
+*843*n#
+Rules for selecting the PSTN for outgoing calls:
+0 = Normally use PSTN unless match mobile prefix (MPREFIX).
+1 = Route all calls via mobile unless PSTN selected with flash-hook.
+2 = Route all calls via PSTN unless prefix *9 used
+If either the PSTN or Mobile fails, the remaining functioning connection will be used
+regardless of this setting.
+21
+*847*n#
+Call forwarding from PSTN/FXO/Landline:
+Incoming calls on the PSTN will be routed via a pre-stored number or allow a caller
+selection of a memory location.
+0 = Off, the landline will ring the phone (if ringing is enabled).
+1 = Forward.
+2 = Set to announce and forward.
+3 = Wait for selection of extension 0-9 from caller (auto-attendant).
+22
+*842*n#
+Number of rings to delay call forwarding:
+0 to 9 rings (default 0).
+23
+*843*n#
+Rules for determining PSTN failure:
+Calls will be routed via the mobile network if the PSTN appears to have failed due to:
+0 = No voltage when on hook (PSTN less than 5V).
+1 = Also insufficient off hook line current (less than 13.2mA).
+2 = Also parallel phone active (PSTN less than 20V) when TX2LR is on hook.
+3 = Also no dial tone detected when off hook.
+24
+*845*n#
+Insert prefix on PSTN calls:
+0 = Do not insert prefix.
+1 = Insert prefix.
+25
+Reserved
+© 2018 Burnside Telecom Ltd.
+Page 13 of 31
+Rev 2.3
+26
+*851*n#
+Automatic send of call log at threshold:
+Calls are automatically logged to a total capacity of 250 entries on a First In First Out
+basis. If the log is not automatically sent, or read using the “CLOG” command, the
+oldest entries will be overwritten. The call log data is mainly intended to be processed
+by computer software. See section on call log format.
+0 = Automatic sending of call log disabled (default).
+1 - 250 = number entries at which point call log sending is triggered
+This function may also be enabled when the automatic sending is enabled, but
+normally only one method would be used.
+27
+*852*n#
+Automatic timed sending of call log:
+When enabled, the call log will be sent at the time specified with LTIME (default is
+midnight).
+0 = Disabled (default).
+1 = Enabled.
+28
+*860*n#
+Automatic sending of SMS status:
+The status of the terminal may be sent automatically either when an error event
+occurs or regularly at specified intervals. The time is set with the “STIME” command
+and the destination number for the SMS is set with “PNUM11”.
+0 = No report (default).
+1 = Report status type 1 error condition when an event occurs.
+2 = Report status type 1 daily at time specified and when event occurs.
+3 = Report status type 2 error condition when an event occurs.
+4 = Report status type 2 daily at time specified and when event occurs.
+5 = Report status type 3 (M2M) including error condition when an event occurs.
+6 = Report status type 3 (M2M) daily at time specified and when event occurs.
+29
+*861*n#
+Event conditions to report:
+When reporting on error condition is enabled with CFG28=1-4, events that trigger
+a report may be controlled by setting bits with this command.
+Bit number
+0
+1
+2
+3
+4
+5
+6
+7
+Function
+Default setting
+Battery condition
+1
+Temperature
+1
+Hook howl state
+1
+Power break
+1
+Turn on/off state change 1
+Low PSTN voltage
+1
+Input changed (option)
+0
+Extended PSTN tests
+0
+Decimal
+1
+2
+4
+8
+16
+32
+64
+128
+The default value with 6 conditions enabled is therefore 63.
+Notes:
+Battery failure is determined by an abnormal rate of change of the battery voltage when
+subjected to charge current.
+Low battery is when there is less than 20% charge remaining.
+Temperature fault is reported when outside operating limits.
+Hook howl is reached after a period of 150 seconds off-hook no call activity.
+Power break is when power is lost for more than the specified period (CFG27)
+© 2018 Burnside Telecom Ltd.
+Page 14 of 31
+Rev 2.3
+When the on/off state change condition is enabled, the terminal will send the status
+when turned on or restarted. When turning off, one of the following may be displayed:
+Turned off by user
+Battery exhausted
+When turned on or automatically restarted, one of the following may be displayed.
+Turned on by user
+Reset restart
+WDT restart
+Followed by full status information
+Low PSTN on-hook voltage is defined as less than 5 volts.
+PSTN off hook fail conditions:
+a) Low current
+b) In use
+c) No dial tone
+30
+*862*n#
+Power break period report threshold:
+Minimum power break period before reporting power break.
+0-1000 minutes (default 5 minutes).
+31
+*844*n#
+Mute audio during PSTN dial:
+The audio may be muted to prevent DTMF tones being heard on the telephone
+which may affect automatic dial equipment such a “telecare” terminals .
+0 = Allow the DTMF dial codes to be heard (default).
+1 = Mute the audio.
+32
+*825*n#
+Audio codec used:
+Selecting a specific codec like FR can sometimes be appropriate for in-band
+DTMF communication with equipment such a “telecare” terminals .
+0 = Restrict to FR and AMR.
+1 = Restrict to FR only.
+33
+*826*n#
+Select length of line from PSTN Central Office to the terminal:
+This allows for fine tuning of echo cancellation on the PSTN. The terminal needs to
+be restarted after changing this setting.
+0 = 300 metres
+1 = 1km (default)
+2 = 3km
+3 = 6km
+34
+*864*n#
+Number of days between sending automatic status:
+1 to 28 days (default 1/daily).
+35
+*826*n#
+Select DC feed current of FXS port:
+To increase the current for compatibility with older telephone equipment.
+0 = 20 milliamps (ma) (default)
+1 = 25 ma
+2 = 30 ma
+© 2018 Burnside Telecom Ltd.
+Page 15 of 31
+Rev 2.3
+36
+*828*n#
+Radio Access Technology (not applicable to TX2/TX2L/TX2LR:
+The wireless mode used. It is sometimes useful to fix to GSM or make preferential
+in areas of weak WCDMA signal. The terminal needs to be turned off then on again
+or the INIT command issued to invoke the selected mode.
+0 = Automatic – prefer UMTS(default).
+1 = Automatic – prefer GSM.
+2 = GSM.
+3 = UMTS.
+37
+*880*n#
+Automatic activation of output (option):
+0 = No action (default).
+1 = Activate output with ring cadence.
+2 = Activate output continuously during ringing.
+3 = Activate output when Mobile Terminated caller ID matches any memory
+and also ring the phone.
+4 = Activate output when Mobile Terminated caller ID matches any memory
+and clear the incoming call.
+5 = Activate output when Mobile Terminated caller ID matches memory 9
+and also ring the phone.
+6 = Activate output when Mobile Terminated caller ID matches memory 9
+and clear the incoming call.
+7 = Activate output when PSTN line failure is detected.
+8 = Activate output when PSTN line failure is detected and deactivate the output
+when the PSTN line is working normally again.
+38
+*882*n#
+Control of output from code entered (option):
+0 = No action.
+1 = Control output from **8n entered from phone connected to terminal (default).
+2 = Control output from code entered into the terminal during a mobile call.
+3 = Control output from code entered locally or into the mobile.
+Please refer to the Burnside application note on use of the input and output
+capabilities of the TX terminals.
+39
+*829*n#
+PSTN power saving on battery:
+0 = PSTN fully operational on battery (default).
+1 = Do not detect incoming calls on PSTN to extend battery standby duration.
+2 = Disable FXO circuit to save power under all conditions (restart terminal after
+setting this).
+40
+*850*n#
+Control of Cellular Text Telephone Modem (CTM) for TTY:
+0 = Audio optimised for voice.
+1 = Audio optimised for Text Telephone (TTY)
+2 = Audio restricted to normal voice and dial prefix disabled.
+In mode 0, it is possible to select an outgoing TTY call by dialling the prefix *9*1.
+In mode 1, it is possible to select an outgoing voice call by dialling the prefix *9*0.
+© 2018 Burnside Telecom Ltd.
+Page 16 of 31
+Rev 2.3
+PNUM(=?)
+*89*[phone number]#
+Read and write phone numbers.
+There are 12 memory locations used to store phone numbers. 10 locations (0 to 9)
+are reserved for speed dial where one digit may be dialled or an “extension” selected
+for the TX2LR Auto-attendant feature.
+Location 10 is reserved for the off-hook autodial.
+For example: PNUM0=0123456789”Ace Taxis” The name field may be omitted and
+is normally only used with Burnside Monicare™.
+An existing number may be cleared, by entering a null value for example:
+PNUM0=,11= (will clear numbers & names from memories 0 and 11).
+Value of n:
+0-9
+10
+11
+12
+Speed dial memory locations 0 – 9.
+Number for off-hook dialling (CFG7=1 “Autodial”).
+Number for sending SMS automatically (CFG10=1/2).
+Identity number and name for sending SMS report.
+AUTO(=?)
+*821*[phone number]#
+Shorthand way of combining PNUM10=n and CFG7=1, where n is the phone
+number. For example AUTO=0123456789. Also *821*# cancels auto dial.
+TPIN(=)
+*818*[old tpin]*[new tpin]*[new tpin]#
+Read and write teminal PIN, fixed length of 4 digits
+For example: TPIN=4321
+The TPIN can be restored to the default using a master code provided by Burnside.
+STATn
+Returns the status of the terminal in one of three different formats specified by n. If n
+is omitted it is interpreted as zero. The resolution of the battery display is 10
+millivolts, and the resolution of the supply is 50 millivolts.
+n = 0 For general status, useful during installation:
+State: n (terminal state, see table 2 below)
+Signal: -79dBm
+Supply: On/Off
+Bat: 4.12V
+PSTN: 48V
+Temperature – (in degrees Celsius)
+Now: 20
+Min: 18
+Max: 26
+Battery: OK/Fault
+Ver: 1.0 (firmware version)
+IMEI: 357749031743900
+n = 1 For information about faults for a technician, each item is sent on a separate line
+which is convenient for a smart phone display.
+n = 2 Unlike the other status commands, this format does not send “Stat2:” preceding the
+information. Otherwise the information is the same as type 1, but each item is sent on
+one line with each field separated by a comma. This is intended for a monitoring
+centre:
+© 2018 Burnside Telecom Ltd.
+Page 17 of 31
+Rev 2.3
+<Imei number> or identity number/name from PNUM 12
+Power: Fail/Recovered after d:h:m:s
+Battery: 4.2V,OK/Low/Exhausted/Fault
+Temperature: 20 (degrees Celsius) OK/Fault
+Hook state: On/Off/Howl
+PSTN: 48V,OK
+Tamper: Open/Closed
+Signal: -dBm
+n = 3 All information in a format intended for a computer:
+index:val,index:val... to index 13
+The index values are as follows:
+0 = Signal in –dBm (eg -79)
+1 = Power supply state (0 for none, 1 for active)
+2 = Battery voltage (eg 4.1)
+3 = PSTN voltage in volts (eg 48)
+4 = Temperature now (in Celsius) (eg 22)
+5 = Minimum temperature recorded (eg -6)
+6= Maximum temperature recorded (eg 37)
+7 = Model/HW ver./Firmware ver. (eg 1/2/1.03)
+8 = Hook howl state (0 is OK, 1 is off-hook & howling)
+9 = Power break (0 for none, otherwise 1. Cleared on read)
+10 = Call state (0 for idle, 1 for call in progress,)
+11 = Battery state (0 for normal, 1 for fault)
+12 = IMEI (eg 357749031743900)
+13= PSTN state (0 for normal, 1 for fault)
+14= Input (0 for closed, 1 for open)
+15= Operating mode = 1 for GSM
+16 = <network operator name>
+n = 4 For information about the mobile operator and network:
+Operator: my operator
+Network: my network
+Mode: GSM
+Signal: -79dBm
+Table 2 state value returned in STAT0 command.
+Value
+Meaning
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+Charge only.
+Insufficient power to operate.
+Error condition, communication failure with wireless module.
+Terminal is initialising.
+Checking SIM present.
+No SIM installed.
+Checking SIM lock.
+Waiting for SIM PIN.
+Waiting for SIM PUK.
+Post SIM unlock initialisation phase.
+Settle time for reading SMS memory.
+Flushing SMS memory.
+Ready for call (always in this state when replying via SMS).
+© 2018 Burnside Telecom Ltd.
+Page 18 of 31
+Rev 2.3
+STIME(=?)
+*863*[hhmm]#
+Time to send daily or interval SMS status 24h format. Default 0000:
+HHMM. For example: STIME=2315 will send status once per day at 23:15.
+STIME=2415 will send status every 15 minutes.
+Maximum time set to 3600 (once per 12 hours).
+CLOCK(=)
+*819*[YYMMDDHHMMSS]#
+Command from SMS, sets the clock to the time recorded in the SMS delivery from
+the mobile network. For setting via USB, see ETSI “+CCLK” command.
+CLRTEMP
+*820#
+Clears the maximum and minimum temperature memory.
+CLRCALL
+Ends any call in progress.
+CLRFAULT
+*823#
+Clears any fault condition.
+REPORT(=?) *822*[phone number]#
+Shorthand way of combining PNUM11=n and CFG28=1, where n is the phone
+number. For example REPORT=07123456789”Bobs mobile”. The name field may be
+omitted. The STAT1 will be sent if an error condition occurs.
+Entering REPORT without a number turns off the automatic error reporting and is
+equivalent to CFG28=0. For example REPORT=
+INIT
+Restarts the terminal (cold boot).
+VER
+Returns the firmware version number.
+HVER
+Returns the hardware version number.
+RESTOREn
+*888*n#
+Restore settings of the terminal
+n = 0 Restore all settings but retain phone numbers and call log.
+n = 1 Also clear phone number memories
+n = 2 Restore settings, phone number memories & call log (restore all)
+ON
+Turns the terminal on (change from charge only to full operation).
+OFF
+Turns the terminal off (change from full operation to charge only.
+© 2018 Burnside Telecom Ltd.
+Page 19 of 31
+Rev 2.3
+Commands for TX2L/ TX2LR:
+MPREFIX
+*846*0*[prefix]#
+Sets the prefix which determines if the number is destined for the mobile network.
+For example MPREFIX=07 (default 07).
+FORWARD(=?) *847*1#/*847*1*[phone number]#
+User friendly command to turning on call forwarding. If a number is entered, it will be
+the equivalent of CFG21=1 and setting PNUM10 where n is the phone number. For
+example FORWARD=0123456789. If FORWARD is used alone and PNUM10 has
+already been programmed or FORWARDn used with a number previously, the call
+forwarding will be enabled with the previous number.
+CANCEL
+*847*0#
+Cancel call forwarding mode. A user friendly equivalent of CFG21=0.
+Call announcement:
+*831#
+*832#
+*833#
+Playback announcement.
+Record new announcement from handset. Press any key
+or hang up to stop recording.
+Clear user recorded announcement and restore default.
+ANNOUNCE(=?) *847*2#/*847*2*[phone number]#
+User friendly command to turn on call forwarding with announcement. If a number is
+entered it will be the equivalent of CFG21=2 and setting PNUM10 where n is the
+phone number. For example ANNOUNCE=0123456789. If ANNOUNCE is used
+alone and PNUM10 has already been programmed or ANNOUNCEn used with a
+number previously, the call forwarding will be enabled with the previous number.
+ATTENDANT *847*3#
+User friendly way of turning on call forwarding with auto-attendant announcement.
+Extension announcement:
+*834*n#
+Playback announcement.
+*835*n#
+Record new announcement from handset. Press any key
+or hang up to stop recording.
+*836*n#
+Clear user recorded announcement and restore default.
+XVOXRCDn
+Review status or clear recorded announcement. Example XVOXRCD1?
+shows the status of extension 1 recording. XVOXRXD1=0, clears the recording.
+XVOXSETn
+*837*n*0/1# Enable or disable extension announcement.
+XVOXSETn? Returns the status of the announcement.
+XREJECTn
+*837*n*0/1# Enable or disable option to reject call to an extension
+that has an announcement enabled.
+XREJECTn? Returns the status of the options.
+PPREFIX
+*846*1*[prefix]#
+Sets a prefix to insert when dialling via the PSTN.
+For example PPREFIX=9 (default 9).
+© 2018 Burnside Telecom Ltd.
+Page 20 of 31
+Rev 2.3
+IPREFIX
+*846*2*[prefix]#
+Sets the IDD prefix that is used to convert “+” in phone numbers for PSTN dialling
+For example IPREFIX=00 (default 0)
+© 2018 Burnside Telecom Ltd.
+Page 21 of 31
+Rev 2.3
+Optional output for all models:
+OUT=n
+**8n (The code is only accepted before a call from the FXS)
+Set the output relay to state specified by n. For example OUT=1 activates the output.
+See CFG37
+OUTDUR=n
+*881*n#
+Duration of automatic output deactivation:
+0-65000 milliseconds. Default is 0 which means relay remains continuously activated.
+Actual resolution of timing is 5milliseconds.
+OUTRPT=n
+*884*n#
+Interval to repeat output:
+0-65000 milliseconds. Default is 0 which means relay does not repeat after automatic
+deactivation is set. Actual resolution of timing is 5milliseconds.
+OPIN
+*883*[old opin]*[new opin]*[new opin]#
+Read and write output activation PIN, variable length from 1 to 4 digits
+For example: OPIN=166
+The default PIN is 55.
+© 2018 Burnside Telecom Ltd.
+Page 22 of 31
+Rev 2.3
+Installing USB driver and connecting to a PC
+Before connecting the terminal to a computer, please download the appropriate driver from the
+Silicon Labs web site. Silicon Labs are the manufacturer of the USB communications device used in
+the TX2/TX2L terminals.
+http://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx
+Once the driver has been installed, connect the TX2 to the computer. The computer will also have to
+supply power for the terminal.
+If it is not convenient to have the computer permanently powering the terminal, it may be possible to
+use a “Power booster cable” where the power to the terminal is supplied from the standard Burnside
+USB charger. Such cables can be located on the internet. Burnside cannot vouch for the quality of
+such cables or be held responsible for any damage cause by using such cables. Another alternative
+is to use a powered hub. If in doubt, consult with an IT expert who specialises in hardware.
+When the TX2 is connected to the PC, a virtual communications port will be created. This port should
+be operated at 115200bps, no parity and one stop bit. No other baud rate can be accepted.
+The command interface on the TX terminal complies with ETSI standards which enables a wide
+range of communication software to work with the terminals.
+If the TX2 is going to be used as an SMS gateway, it is necessary to turn off the SMS command
+capability by entering *811*0#.
+To allow software that dials a modem for initiating a call via a TAPI interface, the TAPI compatibility
+mode should be enabled by entering *813*1#.
+© 2018 Burnside Telecom Ltd.
+Page 23 of 31
+Rev 2.3
+Operating tips
+Use with Telecare terminals or other automatic dial equipment.
+When using equipment that dials into call monitoring centres with signalling equipment, mute the
+DTMF tones while the call is being established (CFG31=1 / *844*1#). This will prevent the dialling
+terminal from being confused by the dialling tones made by the TX2L.
+Phone used in an unattended location or for public use
+When providing a courtesy phone or similar, we recommend restricting the call duration to avoid an
+excessive call cost or blocked destination if the caller does not hang up the phone. See CFG6=n /
+*87*[limit]#.
+Using a phone located in a location with a weak mobile signal
+Locate the terminal in a location where there is an acceptable level of mobile signal then connect a
+longer extension cable to the telephone. For example the TX2 could be in an upper floor near a
+window and the phone could be in a ground floor lobby. Increasing the length of the antenna lead to
+the terminal is less desirable as some of the signal is lost in the cable, whereas a long phone
+extension cable will not impair the performance.
+Working with 3G SIMs and the pros & cons of 3G
+There is a misconception that a modern SIM requires to work in a terminal that supports the 3G
+network. In fact most SIMs that support 3G will also work in 2G. The primary advantage of 3G is high
+speed data, but the signal strength of the 3G signal is weaker (1/8th) so the coverage can be sparse
+apart from urban areas. For a voice application, 2G works well and in many cases is more suitable.
+Regular change of settings
+Program a memory key of your phone with a configuration code to change a setting.
+For example one memory key may have stored *847*1# to turn on PSTN call forwarding and another
+*847*0# to turn off PSTN call forwarding.
+Call forwarding:
+Confusion often arises between call forwarding and call diversion. The use of the term forward by
+mobile network industry refers to a function that diverts calls in the network to a different destination.
+Many landline service providers also provide such services and they are sometimes called call
+forwarding or call diverting. The TX2L terminal can forward on a call received on the landline to a
+destination programmed in the terminal. When this happens, the call on the landline is terminated in
+the TX2L and a new call is made from the TX2L via the mobile network.
+Caller ID on forwarded calls
+When a landline call is forwarded via the TX2L, the caller ID if provided is not forwarded to
+destination phone. This is because the landline call is terminated in the TX2L and a new mobile call is
+made using the SIM. It is the mobile number assigned to the SIM that will be shown on the receiving
+phone.
+© 2018 Burnside Telecom Ltd.
+Page 24 of 31
+Rev 2.3
+Troubleshooting
+If the amber light is indicating a fault, this may be caused by the following:
+• There is no SIM installed.
+Remedy: Turn off the unit and install a SIM. Then turn the unit back on.
+• There is no battery installed and/or connected.
+Remedy: Remove the power, install and connect the battery. Restore power.
+• The unit has overheated.
+Remedy: Locate the terminal in a cooler location. In particular keep out of direct sunlight.
+• Low signal indication or continuous searching indication (see page 14).
+Remedy, either locate the terminal in a more suitable position to achieve a stronger signal or use an
+antenna with high gain or more suitable location connected via a cable. Losses in a long antenna
+cable may cancel out any benefits of a better antenna, so it is often preferable to locate the terminal
+in a more suitable location and extend the telephone cable.
+© 2018 Burnside Telecom Ltd.
+Page 25 of 31
+Rev 2.3
+Important safety information
+Battery
+Do not use any other battery other than the one supplied with your terminal.
+Power supply
+Do not use any other power supply other than the one supplied with your terminal.
+Failure to use either the supplied battery or charger can damage the terminal and will invalidate the
+warranty.
+Operating environment
+Make sure that no special regulations are in force that impose restrictions on the use of mobiles.
+Restrictions to mobiles would also apply to the terminal.
+Electronic devices
+Most modern electronic equipment is shielded from radio frequency (RF) signals. However, certain
+electronic equipment may not be shielded against the RF signals from your terminal.
+Pacemakers
+Pacemaker manufacturers recommend that a minimum separation of 20 cm (8 inches) be maintained
+between a hand-held wireless phone and a pacemaker. The same restriction should apply to the
+antenna of the terminal. If you have any reason to suspect that interference is taking place, switch off
+the terminal immediately.
+Hearing aids
+Some digital wireless phones may interfere with some hearing aids. In the event of such interference,
+you may want to consult your service provider.
+Other medical devices
+Operation of any radio transmitting equipment, including cellular phones, may interfere with the
+functionality of inadequately protected medical devices. Consult a physician or the manufacturer of the
+medical device to determine if they are adequately shielded from external RF energy or if you have any
+questions.
+Switch off your terminal in health care facilities when any regulations posted in these areas instruct you
+to do so. Hospitals or health care facilities may be using equipment that could be sensitive to external
+RF energy.
+Vehicles
+RF signals may affect improperly installed or inadequately shielded electronic systems in motor
+vehicles (e.g. electronic fuel injection systems, electronic anti-skid (anti-lock) braking systems,
+electronic speed control systems, air bag systems).
+Check with the manufacturer or its representative regarding your vehicle. You should also consult the
+manufacturer of any equipment that has been added to your vehicle.
+Potentially explosive atmospheres
+Do not install the terminal or site the antenna in any area with a potentially explosive atmosphere and
+obey all signs and instructions.
+Areas with a potentially explosive atmosphere are often but not always clearly marked. They include
+below deck on boats; chemical transfer or storage facilities; vehicles using liquefied petroleum gas
+(such as propane or butane); areas where the air contains chemicals or particles, such as grain, dust or
+metal powders.
+Emergency calls
+Important! This terminal, like any wireless phone, operates using radio signals, wireless and landline
+networks, as well as user-programmed functions, which cannot guarantee connection in all conditions.
+© 2018 Burnside Telecom Ltd.
+Page 26 of 31
+Rev 2.3
+Therefore, you should never rely solely upon any wireless device for essential communications (e.g.
+medical emergencies). Remember, to make or receive any calls, your terminal must be switched on
+and in a service area with adequate cellular signal strength. Emergency calls may not be possible on
+all wireless phone networks or when certain network services and/or phone features are in use. Check
+with local cellular service providers.
+© 2018 Burnside Telecom Ltd.
+Page 27 of 31
+Rev 2.3
+Technical Specifications
+Operational Requirements
+GSM Systems.
+2G GSM Quad-band GSM phase 2/2+ 850/900 @ 33dBm max.,
+1800/1900 MHz @ 30dBm max.
+Signal sensitivity
+Not suitable for
+connection to:
+-90dBm for reliable operation
+3G Networks
+Power supply
+5VDC Standby 0.15W, On call 1.9W average.
+GSM-R Networks
+AC adapter supplied 100 – 240Vac 50/60Hz.
+Battery backup
+Internal and exchangeable 1100mAH lithium polymer 3.7VDC
+Up to 24 hours standby and 2 hours talk time.
+Indicators
+Two green LEDs and one amber LED.
+Speech codecs
+HR, FR, EFR & AMR
+GSM In-call features Call waiting, multi-part calls and explicit call transfer.
+FXS specification
+DC loop current 25mA
+Ringing signal 25Hz sinusoidal 60V RMS
+Ringing load 3 REN
+Dialling by DTMF
+CLI passed through from FXO.
+FXO specification
+On-hook and off-hook line voltage monitor
+3A on-hook line monitor current
+Loop current monitor
+Parallel handset detection
+Line polarity reversal detection
+Greater than 5000V isolation
+Antenna connection
+50 Ohm SMA male connector
+Monitored faults and
+sensors
+
+
+
+
+
+
+
+Monitoring method
+Power break
+PSTN failure
+Battery condition
+Supply voltage
+Ambient temperature
+Remote interrogation by SMS.
+SMS send on event.
+© 2018 Burnside Telecom Ltd.
+Page 28 of 31
+Rev 2.3
+Environmental limits
+Temperature:
+Operating: -20°C to +40°C
+Charging: 0°C to +40°C
+Storing: -40°C to +55°C
+Relative Humidity Up to 95% (non-condensing)
+Physical characteristics
+Weight
+411g
+Dimensions
+125 x 165 x 35mm
+Compliance to standards
+European
+2014/53/EU Radio Equipment Directive.
+Directive
+2014/35/EU Electrical equipment designed for use within
+certain voltage limits (Low Voltage Directive)
+2011/65/EC - Restriction of the use of certain hazardous
+substances in electrical and electronic equipment (recast)
+(RoHS 2) Directive
+EMC
+EN55032 – Electromagnetic compatibility of multimedia equipment.
+Emission requirements.
+EN55024 – Information technology equipment. Immunity
+characteristics.
+EN 301489-1 - Electromagnetic compatibility and Radio spectrum
+Matters (ERM); ElectroMagnetic Compatibility (EMC) standard for
+radio equipment and services. Part 1: Common technical
+requirements
+EN 301489-7 - ElectroMagnetic Compatibility and Radio spectrum
+Matters (ERM); EMC standard for radio equipment and services.
+Part 7: Specific conditions for mobile and portable radio and
+ancillary equipment of digital cellular radio telecommunications
+systems (GSM and DCS)
+RF Spectrum
+3GPP TS 51.010-1 Mobile Station (MS) conformance specification;
+Efficiency
+EN 301 511 Global System for Mobile communications (GSM);
+Harmonized EN for mobile stations in the GSM 900 and GSM 1800
+bands
+Safety
+EN62368-1 – Specification for information technology equipment,
+including electrical business equipment.
+© 2018 Burnside Telecom Ltd.
+Page 29 of 31
+Rev 2.3
+Recycling information
+All components with
+the exception of the
+battery
+Battery
+The symbol shown here and on the product means that
+the product is classed as Electrical or Electronic
+Equipment and should not be disposed with other
+household or commercial waste at the end of its working
+life.
+The Waste of Electrical and Electronic Equipment
+(WEEE) Directive has been put in place to recycle
+products using best available recovery and recycling
+techniques to minimise the impact on the environment,
+treat any hazardous substances and avoid the
+increasing landfill.
+Business users should contact their suppliers and check
+the terms and conditions of the purchase contract and
+ensure that this product is not mixed with other
+commercial waste for disposal.
+Store undamaged and damaged batteries in an
+impervious inert container and send to smelter for
+recycling.
+Must be treated as special waste, therefore contact GAITronics for assistance if required.
+© 2018 Burnside Telecom Ltd.
+Page 30 of 31
+Rev 2.3
+Revision History
+Date
+Revision
+Description
+30/06/13
+1.0
+First version released
+14/07/14
+1.1
+Added STAT4 command, On/Off commands. Minor changes and corrections.
+22/09/14
+1.2
+Added new status information on turn-on or restart.
+10/08/15
+1.5
+New commands for extension announcement and output option.
+22/08/15
+1.6
+New commands for dial tone control of output
+05/10/15
+1.7
+New commands (CFG39) for control of FXO power
+09/11/15
+1.8
+Corrected wrong CFG values in “Report” command
+Removed section on call logging option.
+27/11/15
+1.9
+Added new rules for detecting PSTN failure (CFG23)
+10/02/16
+2.0
+Added fast method of connecting to PSTN (CFG20=2).
+Added automatic trigger of output on PSTN failure (CFG37=7/8).
+Added automatic repeat of output state, see OUTRPT.
+07/03/16
+2.1
+Included the CLRFAULT command that was omitted from previous versions of this document.
+Added user selection of Cellular Text Telephone Modem for TTY. CFG40 and *9*1/0 prefix
+09/06/17
+2.1
+Added product specifications.
+20/02/18
+2.2
+Revised troubleshooting section.
+© 2018 Burnside Telecom Ltd.
+Page 31 of 31
+Rev 2.3
+

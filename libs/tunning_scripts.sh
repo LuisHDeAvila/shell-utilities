@@ -12,22 +12,21 @@ gray_="\e[0;37m\033[1m"
 _end="\033[0m\e[0m"
 
 # banner
-IMPRIMIR_BANNER(){
-BANNER()
-{ 
-BANNER_file=$1
-cat << ANON
+IMPRIMIR_BANNER() {
+        BANNER() {
+                BANNER_file=$1
+                cat <<ANON
 $BANNER_file                                             
 ANON
-}                                                   
-echo -e "${red_}"; BANNER .fichero_con_banner_de_usuario | pv -qL 1100 ; echo -e "${_end}"
+        }
+        echo -e "${red_}"
+        BANNER .fichero_con_banner_de_usuario | pv -qL 1100
+        echo -e "${_end}"
 }
 
 # SALIDA ESTILIZADA
-trap ctrl_c INT         
-function ctrl_c()
-{
+trap ctrl_c INT
+function ctrl_c() {
         echo -e "\n\n ${red_}[!] Saliendo..${_end} "
         exit 1
 }
-

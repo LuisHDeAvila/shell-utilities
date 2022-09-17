@@ -1,0 +1,6 @@
+#!/bin/bash
+# extract shellcode from binary
+getshellcodefrombinary(){ objdump -d $1 | grep -Po '\s\K[a-f0-9]{2}(?=\s)' | sed 's/^/\\x/g' | perl -pe 's/\r?\n//' | sed 's/$/\n/' ;}
+
+objdump -s "$1" | grep -v '^ [0-9a-f][0-9a-f][0-9a-f][0-9a-f] \b' | grep -v 'Contents' | grep -v './' | cut -d' ' -f 3-6| sed 's/ //g' | sed '/./!d' | tr -d '\n'| sed 's/.\{2\}/&\\x/g' | sed 's/^/\\x/'|sed 's/..$//'|sed 's/^/"/;s/$/"/g'
+
