@@ -6,16 +6,16 @@ DIRSCRIPTS=~/.myscripts
 openstyle='\e[7;39;49m'
 closestyle='\e[m'
 
-function aplicarconfiguracion {
+		aplicarconfiguracion(){
 mkdir $DIRSCRIPTS
-if [ $(echo $PATH | grep -c $DIRSCRIPTS) -le 0 ]
-then
-echo 'export PATH=$PATH:'$DIRSCRIPTS >> ~/.bashrc
-echo -e "${openstyle} se agrego ${DIRSCRIPTS} al PATH, desde ~/.bashrc ${closestyle}"
+		if [ $(echo $PATH | grep -c $DIRSCRIPTS) -le 0 ]
+	then
+			echo 'export PATH=$PATH:'$DIRSCRIPTS >> ~/.bashrc
+			echo -e "${openstyle} se agrego ${DIRSCRIPTS} al PATH, desde ~/.bashrc ${closestyle}"
 fi
 }
-
 (aplicarconfiguracion) 2>/dev/null
+
 
 cat << INDICACION
 

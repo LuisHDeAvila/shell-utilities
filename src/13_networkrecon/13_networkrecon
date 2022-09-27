@@ -1,17 +1,24 @@
 #!/bin/bash
 # escaner de red local para enumerar host activos
 
+		enumerahost(){
+
 echo {1..254} | tr ' ' '\n' | while read host; do
-	if ping -c 1 192.168.1.$host; then
-		echo "Host $host activo"
-	fi &
-done | grep 'activo' 2>/dev/null
-
-			portmapper() {
-		read -p "host: " address
+	if ping -c 1 192.168.1.$host;
+	then
+		echo "  host $host activo"
 		
-		echo {1..65536} | tr ' ' '\n' | while read port; do 
-			exec 5<>/dev/tcp/$address/$port; cat <&5 & cat >&5; exec 5>&-
-		done
-}
+	fi &
+	done | grep 'activo' 2>/dev/null
+				
+	}
 
+		portmapper() {
+	read -p "host: " address
+echo {1..65536} | tr ' ' '\n' | while read port; do
+	: </dev/tcp/$address/$port && echo "$port abierto" &
+		echo -ne "--=[ ports ::: >> ${port}  ]\r"
+			done 2>/dev/null
+	}
+
+enumerahost && portmapper

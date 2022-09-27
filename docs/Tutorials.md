@@ -14,3 +14,6 @@ https://devconnected.com/category/linux-administration/
 
 ##### Offensive security cheatsheets
 https://cheatsheet.haax.fr/linux-systems/privilege-escalation/suid/
+
+##### Ejemplos de scripts, 
+https://tldp.org/LDP/abs/html/contributed-scripts.html
