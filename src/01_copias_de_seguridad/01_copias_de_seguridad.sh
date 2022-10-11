@@ -12,27 +12,26 @@ turquesa_="\e[0;36m\033[1m"
 gray_="\e[0;37m\033[1m"
 _end="\033[0m\e[0m"
 
-# input
+# input: solicita ruta de origen y destino
 echo -e $gray_
-cat <<INICIO
-  ejemplo de ruta absoluta: /home/user/tarea/historia
-  ejemplo de ruta relativa: ./historia
+cat << INICIO
+ejemplo de ruta absoluta: /home/user/tarea/historia
+ejemplo de ruta relativa: ./historia
 INICIO
-read -p " Ruta absoluta del directorio a copiar: " DIRECTORIO_ORIGEN
-read -p " Ruta absoluta del directorio de copias de seguridad: " DIRECTORIO_DESTINO
 echo -e $_end
+read -p " >_ Ruta absoluta del directorio a copiar: " DIRECTORIO_ORIGEN
+read -p " >_ Ruta absoluta del directorio de copias de seguridad: " DIRECTORIO_DESTINO
 
-# main
-function CopiasDeSeguridad()
-{
-  FECHA=$(date +%Y.%m.%d-%H.%M.%S)
+# principal
+function CopiasDeSeguridad {
+  local FECHA=$(date +%Y.%m.%d-%H.%M.%S)
 
-  function CopiaTotal() 
-  {
-    RUTA_FICHEROS=$DIRECTORIO_DESTINO
-    FICHERO_ULTIMA_COPIA_TOTAL=$RUTA_FICHEROS/fecha-ultima-copia-total.txt
-    FICHERO_COMPRIMIDO=$RUTA_FICHEROS/total-$FECHA.tar.zip
-    DIRECTORIO_A_COPIAR=$DIRECTORIO_ORIGEN
+  # realiza una copia total del directorio
+  CopiaTotal() {
+    local RUTA_FICHEROS=$DIRECTORIO_DESTINO
+    local FICHERO_ULTIMA_COPIA_TOTAL=$RUTA_FICHEROS/fecha-ultima-copia-total.txt
+    local FICHERO_COMPRIMIDO=$RUTA_FICHEROS/total-$FECHA.tar.zip
+    local DIRECTORIO_A_COPIAR=$DIRECTORIO_ORIGEN
     if [ ! -d $DIRECTORIO_A_COPIAR ]; then
       echo "No existe el directorio a copiar."
       exit 1
@@ -44,13 +43,13 @@ function CopiasDeSeguridad()
     zip -r $FICHERO_COMPRIMIDO $DIRECTORIO_A_COPIAR
   }
 
-  function CopiaDiferencial() 
-  {
-    RUTA_FICHEROS=$DIRECTORIO_DESTINO
-    FICHERO_ULTIMA_COPIA_TOTAL=$RUTA_FICHEROS/fecha-ultima-copia-total.txt
-    FICHERO_ULTIMA_COPIA_DIFERENCIAL=$RUTA_FICHEROS/fecha-ultima-copia-diferencial.txt
-    FICHERO_COMPRIMIDO=$RUTA_FICHEROS/diferencial-$FECHA.tar.zip
-    DIRECTORIO_A_COPIAR=$DIRECTORIO_ORIGEN
+  # analiza si hay diferencias entre la copia total anterior y la actual: esto evita redundancia.
+  CopiaDiferencial() {
+    local RUTA_FICHEROS=$DIRECTORIO_DESTINO
+    local FICHERO_ULTIMA_COPIA_TOTAL=$RUTA_FICHEROS/fecha-ultima-copia-total.txt
+    local FICHERO_ULTIMA_COPIA_DIFERENCIAL=$RUTA_FICHEROS/fecha-ultima-copia-diferencial.txt
+    local FICHERO_COMPRIMIDO=$RUTA_FICHEROS/diferencial-$FECHA.tar.zip
+    local DIRECTORIO_A_COPIAR=$DIRECTORIO_ORIGEN
     if [ ! -d $DIRECTORIO_A_COPIAR ]; then
       echo "No existe el directorio a copiar."
       exit 1
@@ -66,28 +65,25 @@ function CopiasDeSeguridad()
     find $DIRECTORIO_A_COPIAR/* -newer $FICHERO_ULTIMA_COPIA_TOTAL | zip -@ $FICHERO_COMPRIMIDO
   }
 
-  function CopiaIncremental() 
-  {
-    RUTA_FICHEROS=$DIRECTORIO_DESTINO
-    FICHERO_ULTIMA_COPIA_TOTAL=$RUTA_FICHEROS/fecha-ultima-copia-total.txt
-    FICHERO_ULTIMA_COPIA_DIFERENCIAL=$RUTA_FICHEROS/fecha-ultima-copia-diferencial.txt
-    FICHERO_ULTIMA_COPIA_INCREMENTAL=$RUTA_FICHEROS/fecha-ultima-copia-incremental.txt
-    FICHERO_COMPRIMIDO=$RUTA_FICHEROS/diferencial-$FECHA.tar.zip
-    DIRECTORIO_A_COPIAR=$DIRECTORIO_ORIGEN
-    function copia_desde_ultima_incremental() 
-    {
+  # actualiza la copia total
+  CopiaIncremental() {
+    local RUTA_FICHEROS=$DIRECTORIO_DESTINO
+    local FICHERO_ULTIMA_COPIA_TOTAL=$RUTA_FICHEROS/fecha-ultima-copia-total.txt
+    local FICHERO_ULTIMA_COPIA_DIFERENCIAL=$RUTA_FICHEROS/fecha-ultima-copia-diferencial.txt
+    local FICHERO_ULTIMA_COPIA_INCREMENTAL=$RUTA_FICHEROS/fecha-ultima-copia-incremental.txt
+    local FICHERO_COMPRIMIDO=$RUTA_FICHEROS/diferencial-$FECHA.tar.zip
+    local DIRECTORIO_A_COPIAR=$DIRECTORIO_ORIGEN
+    copia_desde_ultima_incremental() {
       find $DIRECTORIO_A_COPIAR/*.txt -newer $FICHERO_ULTIMA_INCREMENTAL | zip -@ $FICHERO_COMPRIMIDO
       echo $FECHA >$FICHERO_ULTIMA_COPIA_INCREMENTAL
       exit 0
     }
-    function copia_desde_ultima_diferencial() 
-    {
+    copia_desde_ultima_diferencial() {
       echo $FECHA >$FICHERO_ULTIMA_COPIA_INCREMENTAL
       find $DIRECTORIO_A_COPIAR/*.txt -newer $FICHERO_ULTIMA_DIFERENCIAL | zip -@ $FICHERO_COMPRIMIDO
       exit 0
     }
-    function copia_desde_ultima_total() 
-    {
+    copia_desde_ultima_total() {
       echo $FECHA >$FICHERO_ULTIMA_COPIA_INCREMENTAL
       find $DIRECTORIO_A_COPIAR/*.txt -newer $FICHERO_ULTIMA_COPIA | zip -@ $FICHERO_COMPRIMIDO
       exit 0
@@ -112,4 +108,5 @@ function CopiasDeSeguridad()
   CopiaIncremental
 }
 
+# ejecucion
 CopiasDeSeguridad

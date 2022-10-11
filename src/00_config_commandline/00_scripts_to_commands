@@ -1,22 +1,24 @@
 #!/bin/bash
 # eleAche
-# configura entorno para trabajar con shell scripting, crea un directorio para almacenar scripts, y lo agrega al path.
-
 DIRSCRIPTS=~/.myscripts
 openstyle='\e[7;39;49m'
 closestyle='\e[m'
 
-		aplicarconfiguracion(){
-mkdir $DIRSCRIPTS
-		if [ $(echo $PATH | grep -c $DIRSCRIPTS) -le 0 ]
-	then
+# si ~/.myscripts no esta en el path lo agrega desde el ~/.bashrc
+aplicarconfiguracion() {
+	mkdir $DIRSCRIPTS
+
+	if [ $(echo $PATH | grep -c $DIRSCRIPTS) -le 0 ]
+		then
 			echo 'export PATH=$PATH:'$DIRSCRIPTS >> ~/.bashrc
 			echo -e "${openstyle} se agrego ${DIRSCRIPTS} al PATH, desde ~/.bashrc ${closestyle}"
-fi
+	fi
 }
+
+# aplica configuacion sin logs
 (aplicarconfiguracion) 2>/dev/null
 
-
+# heredoc: indica al usuario como personalizar su linea de comandos
 cat << INDICACION
 
 Para tener acceso a tus scripts desde el CLI, sigue las siguientes instrucciones:

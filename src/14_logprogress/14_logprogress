@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Funciones de logs para scripts
+
+# loader	
+		log_chars() {
+	chars="dbpqdbpq"
+	while :
+	do
+		for ((i = 0; i < ${#chars}; i++))
+		do
+			sleep 0.03
+			echo -en "    [\e[1;3$i;40m${chars:$i:1}\e[m] cargando" "\r"
+		done
+	done
+}
+
+# simulacion de escritura 
+		log_show() {
+			local phrase="$@"
+			n=1
+	while :
+	do
+		echo -ne "\e[1;34;40m${phrase::$n} \e[m \r"
+		sleep 0.4
+		let n++
+	done
+}
+
